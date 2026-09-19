@@ -16,4 +16,6 @@ export interface Medication {
   changed_at_discharge: boolean;
   /** @nullable */
   previous_dose: string | null;
+  /** @nullable */
+  expires_at: Date | null;
 }

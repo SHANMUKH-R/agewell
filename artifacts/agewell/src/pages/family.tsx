@@ -1,8 +1,10 @@
 import { useGetAgewellState, useGetAgewellPatient } from '@workspace/api-client-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getLevelColor } from '@/lib/utils';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { QueryError } from '@/components/ui/query-error';
+import { OverallHealth, VitalsGrid } from '@/components/HealthVisuals';
+import { getMedicationAdherence } from '@/lib/health-data';
+import { Phone, Pill, UserRound } from 'lucide-react';
 
 export default function FamilyView() {
   const { data: state } = useGetAgewellState();
@@ -10,186 +12,114 @@ export default function FamilyView() {
   const { data: patient, isLoading, isError, error, refetch } = useGetAgewellPatient(id);
 
   if (isError) return <QueryError error={error} refetch={refetch} />;
-
   if (isLoading || !patient) return <div className="p-8 text-center text-slate-500">Loading family view...</div>;
 
-  const { care_plan, current_assessment, summary, day, logs, cases, assessments } = patient;
+  const { care_plan, current_assessment, summary, day, logs, cases, assessments, protocol } = patient;
+  const caregiver = care_plan.caregiver;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 pb-20 font-sans transition-colors">
-      <div className="bg-white dark:bg-slate-900 px-4 md:px-8 py-6 border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-10 flex items-center justify-between">
+    <div className="min-h-screen bg-slate-50 pb-20 font-sans text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100">
+      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white px-4 py-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:px-8">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{care_plan.patient.name} — Day {day} of 7</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">{new Date().toLocaleDateString()}</p>
+          <h1 className="text-2xl font-bold">{care_plan.patient.name} — Day {day} of 7</h1>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Family view · current patient follows the shared demo selection</p>
         </div>
-        <div className="flex gap-1">
-          {Array.from({length: 7}).map((_, i) => {
-            const isPast = i < day;
-            const isToday = i === day - 1;
-            const dayAssessment = assessments.find(a => a.day === i + 1);
-            const color = !isPast
-              ? 'bg-slate-200 dark:bg-slate-700'
-              : getLevelColor(dayAssessment?.level ?? 'GREEN');
+        <div className="flex gap-1" aria-label="Seven-day health trajectory">
+          {Array.from({ length: 7 }).map((_, index) => {
+            const dayAssessment = assessments.find((assessment) => assessment.day === index + 1);
             return (
-              <div key={i} className={`w-3 h-3 md:w-4 md:h-4 rounded-full ${color} ${isToday ? 'ring-2 ring-offset-2 ring-primary dark:ring-offset-slate-900' : ''}`} />
+              <div
+                key={index}
+                title={`Day ${index + 1}: ${dayAssessment?.level || 'No record'}`}
+                className={`h-3 w-3 rounded-full md:h-4 md:w-4 ${index < day ? getLevelColor(dayAssessment?.level ?? 'GREEN') : 'bg-slate-200 dark:bg-slate-700'} ${index === day - 1 ? 'ring-2 ring-primary ring-offset-2 dark:ring-offset-slate-900' : ''}`}
+              />
             );
           })}
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 space-y-8">
-        
-        {/* What Changed Today */}
-        <div className={`p-6 rounded-xl border-l-4 shadow-sm bg-white dark:bg-slate-900 ${
-          current_assessment.level === 'GREEN' ? 'border-l-emerald-500' : 
-          current_assessment.level === 'YELLOW' ? 'border-l-amber-500' : 
+      <div className="mx-auto max-w-4xl space-y-8 px-4 py-8 md:px-8">
+        <div className={`rounded-xl border-l-4 bg-white p-6 shadow-sm dark:bg-slate-900 ${
+          current_assessment.level === 'GREEN' ? 'border-l-emerald-500' :
+          current_assessment.level === 'YELLOW' ? 'border-l-amber-500' :
           current_assessment.level === 'ORANGE' ? 'border-l-orange-500' : 'border-l-red-500'
         }`}>
-          <h2 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 mb-2">What changed today</h2>
-          <p className="text-lg md:text-xl font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
-            {summary.patient_summary}
-          </p>
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">What changed today</h2>
+          <p className="text-lg font-medium leading-relaxed md:text-xl">{summary.patient_summary}</p>
         </div>
 
-        {/* Adherence summary */}
-        <Card className="border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-          <CardHeader className="pb-2 border-b border-slate-100 dark:border-slate-800">
-            <CardTitle className="text-sm dark:text-slate-200">Medication Adherence</CardTitle>
+        <OverallHealth logs={logs} assessments={assessments} currentDay={day} />
+
+        <Card className="border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+          <CardHeader className="border-b border-slate-100 pb-2 dark:border-slate-800">
+            <CardTitle className="flex items-center gap-2 text-base"><Pill className="h-4 w-4 text-slate-500" /> Medication adherence this week</CardTitle>
           </CardHeader>
-          <CardContent className="pt-4 flex flex-col justify-center">
-            <div className="space-y-4">
-              {care_plan.medications.slice(0,4).map((med, idx) => {
-                const takenCount = logs.filter(l => l.meds_taken.some(m => m.med_name === med.name && m.taken)).length;
-                const pct = Math.round((takenCount / day) * 100) || 0;
-                return (
-                  <div key={idx} className="space-y-1">
-                    <div className="flex justify-between text-xs font-medium dark:text-slate-300">
-                      <span className="truncate pr-2">{med.name}</span>
-                      <span>{pct}%</span>
-                    </div>
-                    <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                      <div className="h-full bg-emerald-500 dark:bg-emerald-600 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} />
-                    </div>
+          <CardContent className="space-y-4 pt-4">
+            {care_plan.medications.map((medication) => {
+              const adherence = getMedicationAdherence(medication, logs, day);
+              return (
+                <div key={medication.name} className="space-y-1">
+                  <div className="flex justify-between gap-3 text-sm font-medium">
+                    <span className="truncate">{medication.name}</span>
+                    <span>{adherence.isAsNeeded ? 'As needed' : adherence.percentage == null ? 'No record' : `${adherence.percentage}%`}</span>
                   </div>
-                );
-              })}
-            </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                    <div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${adherence.percentage ?? 0}%` }} />
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    {adherence.isAsNeeded ? 'Not included in scheduled adherence' : `${adherence.taken} taken · ${adherence.missed} missed · ${adherence.unknown} no record`}
+                  </p>
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
 
-        {/* Trend Charts - Grouped by 2 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <CardHeader className="pb-2 border-b border-slate-100 dark:border-slate-800">
-              <CardTitle className="text-sm text-slate-700 dark:text-slate-300">Weight Trend (lbs)</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-4 h-48">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={logs} margin={{ top: 5, right: 5, bottom: 5, left: -20 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                  <XAxis dataKey="day" tickFormatter={(v) => `D${v}`} style={{ fontSize: 10 }} />
-                  <YAxis domain={['auto', 'auto']} style={{ fontSize: 10 }} />
-                  <Tooltip contentStyle={{ fontSize: '12px' }} />
-                  {care_plan.discharge_baseline.weight_lb != null && (
-                    <ReferenceLine y={care_plan.discharge_baseline.weight_lb} stroke="#94a3b8" strokeDasharray="3 3" />
-                  )}
-                  <Line type="monotone" dataKey="weight_lb" stroke="#0ea5e9" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          <Card className="border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <CardHeader className="pb-2 border-b border-slate-100 dark:border-slate-800">
-              <CardTitle className="text-sm text-slate-700 dark:text-slate-300">Heart Rate (bpm)</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-4 h-48">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={logs} margin={{ top: 5, right: 5, bottom: 5, left: -20 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                  <XAxis dataKey="day" tickFormatter={(v) => `D${v}`} style={{ fontSize: 10 }} />
-                  <YAxis domain={['auto', 'auto']} style={{ fontSize: 10 }} />
-                  <Tooltip contentStyle={{ fontSize: '12px' }} />
-                  {care_plan.discharge_baseline.heart_rate != null && (
-                    <ReferenceLine y={care_plan.discharge_baseline.heart_rate} stroke="#94a3b8" strokeDasharray="3 3" />
-                  )}
-                  <Line type="monotone" dataKey="heart_rate" stroke="#f43f5e" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          <Card className="border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <CardHeader className="pb-2 border-b border-slate-100 dark:border-slate-800">
-              <CardTitle className="text-sm text-slate-700 dark:text-slate-300">Blood Pressure</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-4 h-48">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={logs} margin={{ top: 5, right: 5, bottom: 5, left: -20 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                  <XAxis dataKey="day" tickFormatter={(v) => `D${v}`} style={{ fontSize: 10 }} />
-                  <YAxis domain={['auto', 'auto']} style={{ fontSize: 10 }} />
-                  <Tooltip contentStyle={{ fontSize: '12px' }} />
-                  {care_plan.discharge_baseline.bp_systolic != null && (
-                    <ReferenceLine y={care_plan.discharge_baseline.bp_systolic} stroke="#94a3b8" strokeDasharray="3 3" />
-                  )}
-                  {care_plan.discharge_baseline.bp_diastolic != null && (
-                    <ReferenceLine y={care_plan.discharge_baseline.bp_diastolic} stroke="#94a3b8" strokeDasharray="3 3" />
-                  )}
-                  <Line type="monotone" dataKey="bp_systolic" stroke="#6366f1" strokeWidth={2} dot={{ r: 4 }} name="Systolic" />
-                  <Line type="monotone" dataKey="bp_diastolic" stroke="#8b5cf6" strokeWidth={2} dot={{ r: 4 }} name="Diastolic" />
-                </LineChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          <Card className="border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <CardHeader className="pb-2 border-b border-slate-100 dark:border-slate-800">
-              <CardTitle className="text-sm text-slate-700 dark:text-slate-300">Oxygen (SpO2 %)</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-4 h-48">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={logs} margin={{ top: 5, right: 5, bottom: 5, left: -20 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                  <XAxis dataKey="day" tickFormatter={(v) => `D${v}`} style={{ fontSize: 10 }} />
-                  <YAxis domain={[85, 100]} style={{ fontSize: 10 }} />
-                  <Tooltip contentStyle={{ fontSize: '12px' }} />
-                  {care_plan.discharge_baseline.spo2 != null && (
-                    <ReferenceLine y={care_plan.discharge_baseline.spo2} stroke="#94a3b8" strokeDasharray="3 3" />
-                  )}
-                  <Line type="monotone" dataKey="spo2" stroke="#10b981" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Active Cases */}
-        <Card className="border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-          <CardHeader className="pb-2 border-b border-slate-100 dark:border-slate-800">
-            <CardTitle className="text-sm dark:text-slate-200">Care Team Activity</CardTitle>
+        <Card className="border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+          <CardHeader className="border-b border-slate-100 pb-2 dark:border-slate-800">
+            <CardTitle className="flex items-center gap-2 text-base"><UserRound className="h-4 w-4 text-slate-500" /> Caregiver contact</CardTitle>
           </CardHeader>
           <CardContent className="pt-4">
-            {cases.length > 0 ? (
-              <div className="space-y-4">
-                {cases.map((c, i) => (
-                  <div key={i} className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700 gap-3">
-                    <div>
-                      <div className="font-medium text-slate-900 dark:text-slate-100 text-sm mb-1">{c.headline}</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400">Opened Day {c.day} • Status: {c.state}</div>
-                    </div>
-                    <div className="shrink-0 text-xs font-medium px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md text-slate-600 dark:text-slate-300">
-                      Handler: {c.who_should_act}
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <p className="font-semibold">{caregiver.name} <span className="font-normal text-slate-500">({caregiver.relation})</span></p>
+            {caregiver.phone ? (
+              <a href={`tel:${caregiver.phone}`} className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-primary px-4 py-2 font-semibold text-white" aria-label={`Call ${caregiver.name}, ${caregiver.relation}`}>
+                <Phone className="h-4 w-4" /> Call {caregiver.name} ({caregiver.relation})
+              </a>
             ) : (
-              <div className="text-center py-8 text-sm text-slate-500 dark:text-slate-400">No care team interventions required so far.</div>
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Phone not available for this caregiver.</p>
             )}
           </CardContent>
         </Card>
 
+        <Card className="border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+          <CardHeader className="border-b border-slate-100 pb-2 dark:border-slate-800">
+            <CardTitle className="text-base">Vitals and discharge baseline</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <VitalsGrid logs={logs} carePlan={care_plan} protocol={protocol} />
+          </CardContent>
+        </Card>
+
+        <Card className="border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+          <CardHeader className="border-b border-slate-100 pb-2 dark:border-slate-800">
+            <CardTitle className="text-base">Care team activity</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-4">
+            {cases.length > 0 ? (
+              <div className="space-y-4">
+                {cases.map((item, index) => (
+                  <div key={`${item.id}-${index}`} className="flex flex-col justify-between gap-3 rounded-lg border border-slate-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800 md:flex-row md:items-center">
+                    <div>
+                      <div className="mb-1 font-medium">{item.headline}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Opened Day {item.day} · Status: {item.state}</div>
+                    </div>
+                    <div className="shrink-0 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Handler: {item.who_should_act}</div>
+                  </div>
+                ))}
+              </div>
+            ) : <div className="py-8 text-center text-sm text-slate-500">No care team interventions required so far.</div>}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

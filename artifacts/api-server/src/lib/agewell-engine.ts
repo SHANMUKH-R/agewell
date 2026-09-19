@@ -46,8 +46,23 @@ export function assessCached(plan:CarePlan, logs:DayLog[]):Assessment {
   const hrDelta=valid(v.heart_rate)&&valid(c.baseline.heart_rate)?v.heart_rate-c.baseline.heart_rate:null;
   const bpDelta=valid(v.bp_systolic)&&valid(c.baseline.bp_systolic)?v.bp_systolic-c.baseline.bp_systolic:null;
   const symptomatic=v.symptoms.length>0 || /puffy|lightheaded/i.test(v.free_text_note);
+  // Future scope: normalize measurement timing (for example, AM versus PM weight)
+  // before applying these patient-baseline bands; timing variation can skew color.
   if(rank[level]<1 && symptomatic && ((weightDelta??0)>=1 || (hrDelta??0)>=8 || Math.abs(bpDelta??0)>=15)) level="YELLOW";
   if(rank[level]<2 && symptomatic && (weightDelta??0)>=2.5 && (hrDelta??0)>=15) level="ORANGE";
+  const spo2Delta=valid(v.spo2)&&valid(c.baseline.spo2)?v.spo2-c.baseline.spo2:null;
+  const glucoseDelta=valid(v.glucose)&&valid(c.baseline.glucose)?v.glucose-c.baseline.glucose:null;
+  const tempDelta=valid(v.temp_f)&&valid(c.baseline.temp_f)?v.temp_f-c.baseline.temp_f:null;
+  // Respiratory deterioration is relative to a patient's baseline, but the absolute
+  // SpO2 hard floor above always takes precedence.
+  if(rank[level]<1 && c.primary==="COPD" && (spo2Delta??0)<=-3) level="YELLOW";
+  if(rank[level]<2 && c.primary==="COPD" && (spo2Delta??0)<=-5) level="ORANGE";
+  // These condition-specific bands require a reported symptom; absolute glucose
+  // and fever rules remain the only escalation path without corroborating context.
+  if(rank[level]<1 && c.primary==="DIABETES" && symptomatic && Math.abs(glucoseDelta??0)>=40) level="YELLOW";
+  if(rank[level]<2 && c.primary==="DIABETES" && symptomatic && Math.abs(glucoseDelta??0)>=80) level="ORANGE";
+  if(rank[level]<1 && c.primary==="POST_OP" && symptomatic && (tempDelta??0)>=1) level="YELLOW";
+  if(rank[level]<2 && c.primary==="POST_OP" && symptomatic && (tempDelta??0)>=1.8) level="ORANGE";
   const template=level!=="RED"&&v.med_verification.mismatch?cached.mismatch:cached[level];
   const rationale=rules.map(r=>r.msg);
   if(valid(v.weight_lb))rationale.push(`Weight is ${v.weight_lb} lb${valid(c.baseline.weight_lb)?` versus discharge ${c.baseline.weight_lb} lb`:"; no discharge weight was documented"}.`);
@@ -64,7 +79,14 @@ export function assessCached(plan:CarePlan, logs:DayLog[]):Assessment {
 }
 export async function claude(system:string,user:unknown):Promise<unknown> {
   if(!process.env.ANTHROPIC_API_KEY)throw new Error("No API key; cached mode");
-  const response=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal:AbortSignal.timeout(5500),headers:{"content-type":"application/json","x-api-key":process.env.ANTHROPIC_API_KEY,"anthropic-version":"2023-06-01"},body:JSON.stringify({model:"claude-sonnet-4-5",max_tokens:2400,system,messages:[{role:"user",content:JSON.stringify(user)}]})});
+  const request=async(model:string)=>fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal:AbortSignal.timeout(5500),headers:{"content-type":"application/json","x-api-key":process.env.ANTHROPIC_API_KEY,"anthropic-version":"2023-06-01"},body:JSON.stringify({model,max_tokens:8192,system,messages:[{role:"user",content:JSON.stringify(user)}]})});
+  let response=await request("claude-sonnet-5");
+  if(!response.ok){
+    const providerMessage=await response.text();
+    const modelRejected=response.status===400&&/\bmodel\b|not found|unknown model|invalid model/i.test(providerMessage);
+    if(!modelRejected)throw new Error("AI provider unavailable");
+    response=await request("claude-sonnet-4-5");
+  }
   if(!response.ok)throw new Error("AI provider unavailable");
   const result=await response.json() as {content?:{type:string;text?:string}[]};
   return JSON.parse(result.content?.filter(c=>c.type==="text").map(c=>c.text).join("")??"");

@@ -20,6 +20,7 @@ import FamilyView from '@/pages/family';
 import IntakeScreen from '@/pages/intake';
 import ReportScreen from '@/pages/report';
 import Welcome from '@/pages/welcome';
+import Landing from '@/pages/landing';
 import { AccessibilityProvider } from '@/lib/accessibility';
 
 const queryClient = new QueryClient({
@@ -37,7 +38,8 @@ function Router() {
     <AppLayout>
       <RoutedErrorBoundary>
         <Switch>
-          <Route path="/" component={ClinicianDashboard} />
+          <Route path="/" component={Landing} />
+          <Route path="/clinician" component={ClinicianDashboard} />
           <Route path="/patients/:id" component={PatientDetail} />
           <Route path="/welcome" component={Welcome} />
           <Route path="/elder" component={ElderApp} />

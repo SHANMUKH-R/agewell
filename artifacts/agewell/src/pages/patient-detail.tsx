@@ -8,10 +8,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { getLevelColor } from '@/lib/utils';
 import { ArrowLeft, BrainCircuit, Activity, Pill, Clock, FileText, CheckCircle2, MessageCircle } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { useToast } from '@/hooks/use-toast';
 import { QueryError } from '@/components/ui/query-error';
+import { OverallHealth, VitalsGrid } from '@/components/HealthVisuals';
+import { getMedicationAdherence, getMedicationDosesPerDay } from '@/lib/health-data';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
 export default function PatientDetail() {
   const params = useParams();
@@ -30,7 +32,7 @@ export default function PatientDetail() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="mb-6">
-        <Link href="/" className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-primary mb-4 dark:text-slate-400 dark:hover:text-primary">
+        <Link href="/clinician" className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-primary mb-4 dark:text-slate-400 dark:hover:text-primary">
           <ArrowLeft className="w-4 h-4 mr-1" /> Back to Command Center
         </Link>
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
@@ -139,7 +141,10 @@ export default function PatientDetail() {
             </Card>
           )}
 
+          <OverallHealth logs={logs} assessments={patient.assessments} currentDay={patient.day} />
+
           {/* Vitals Charts */}
+          {false && (
           <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
             <CardHeader className="pb-2 flex flex-row justify-between items-center border-b border-slate-100 dark:border-slate-800">
               <CardTitle className="text-base flex items-center gap-2 dark:text-slate-200">
@@ -160,7 +165,7 @@ export default function PatientDetail() {
                         <YAxis domain={['auto', 'auto']} style={{ fontSize: 12 }} />
                         <Tooltip contentStyle={{ fontSize: '12px', borderRadius: '8px' }} />
                         {care_plan.discharge_baseline.weight_lb != null && (
-                          <ReferenceLine y={care_plan.discharge_baseline.weight_lb} stroke="#94a3b8" strokeDasharray="3 3" label={{ position: 'top', value: 'Baseline', fill: '#94a3b8', fontSize: 10 }} />
+                          <ReferenceLine y={care_plan.discharge_baseline.weight_lb ?? undefined} stroke="#94a3b8" strokeDasharray="3 3" label={{ position: 'top', value: 'Baseline', fill: '#94a3b8', fontSize: 10 }} />
                         )}
                         <Line type="monotone" dataKey="weight_lb" stroke="#0ea5e9" strokeWidth={3} dot={{ r: 4, strokeWidth: 2 }} activeDot={{ r: 6 }} />
                       </LineChart>
@@ -179,10 +184,10 @@ export default function PatientDetail() {
                         <YAxis domain={['auto', 'auto']} style={{ fontSize: 12 }} />
                         <Tooltip contentStyle={{ fontSize: '12px', borderRadius: '8px' }} />
                         {care_plan.discharge_baseline.bp_systolic != null && (
-                          <ReferenceLine y={care_plan.discharge_baseline.bp_systolic} stroke="#94a3b8" strokeDasharray="3 3" />
+                          <ReferenceLine y={care_plan.discharge_baseline.bp_systolic ?? undefined} stroke="#94a3b8" strokeDasharray="3 3" />
                         )}
                         {care_plan.discharge_baseline.bp_diastolic != null && (
-                          <ReferenceLine y={care_plan.discharge_baseline.bp_diastolic} stroke="#94a3b8" strokeDasharray="3 3" />
+                          <ReferenceLine y={care_plan.discharge_baseline.bp_diastolic ?? undefined} stroke="#94a3b8" strokeDasharray="3 3" />
                         )}
                         <Line type="monotone" dataKey="bp_systolic" stroke="#6366f1" strokeWidth={2} dot={{ r: 4, strokeWidth: 2 }} />
                         <Line type="monotone" dataKey="bp_diastolic" stroke="#8b5cf6" strokeWidth={2} dot={{ r: 4, strokeWidth: 2 }} />
@@ -202,7 +207,7 @@ export default function PatientDetail() {
                         <YAxis domain={['auto', 'auto']} style={{ fontSize: 12 }} />
                         <Tooltip contentStyle={{ fontSize: '12px', borderRadius: '8px' }} />
                         {care_plan.discharge_baseline.heart_rate != null && (
-                          <ReferenceLine y={care_plan.discharge_baseline.heart_rate} stroke="#94a3b8" strokeDasharray="3 3" />
+                          <ReferenceLine y={care_plan.discharge_baseline.heart_rate ?? undefined} stroke="#94a3b8" strokeDasharray="3 3" />
                         )}
                         <Line type="monotone" dataKey="heart_rate" stroke="#f43f5e" strokeWidth={3} dot={{ r: 4, strokeWidth: 2 }} />
                       </LineChart>
@@ -221,7 +226,7 @@ export default function PatientDetail() {
                         <YAxis domain={[85, 100]} style={{ fontSize: 12 }} />
                         <Tooltip contentStyle={{ fontSize: '12px', borderRadius: '8px' }} />
                         {care_plan.discharge_baseline.spo2 != null && (
-                          <ReferenceLine y={care_plan.discharge_baseline.spo2} stroke="#94a3b8" strokeDasharray="3 3" />
+                          <ReferenceLine y={care_plan.discharge_baseline.spo2 ?? undefined} stroke="#94a3b8" strokeDasharray="3 3" />
                         )}
                         <Line type="monotone" dataKey="spo2" stroke="#10b981" strokeWidth={3} dot={{ r: 4, strokeWidth: 2 }} />
                       </LineChart>
@@ -230,6 +235,17 @@ export default function PatientDetail() {
                 )}
 
               </div>
+            </CardContent>
+          </Card>
+          )}
+          <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+            <CardHeader className="border-b border-slate-100 pb-2 dark:border-slate-800">
+              <CardTitle className="text-base flex items-center gap-2 dark:text-slate-200">
+                <Activity className="w-4 h-4 text-slate-500" /> Vitals Trending
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <VitalsGrid logs={logs} carePlan={care_plan} protocol={protocol} />
             </CardContent>
           </Card>
 
@@ -296,13 +312,22 @@ export default function PatientDetail() {
                       </TableCell>
                       {Array.from({length: patient.day}).map((_, i) => {
                         const dayLog = logs.find(l => l.day === i + 1);
-                        const takenRecord = dayLog?.meds_taken.find(m => m.med_name === med.name);
+                        const medicationRecords = dayLog?.meds_taken.filter(m => m.med_name === med.name) || [];
+                        const takenRecord = medicationRecords[0];
+                        const expectedDoses = getMedicationDosesPerDay(med.frequency);
+                        const takenDoses = medicationRecords.filter(m => m.taken).length;
                         return (
                           <TableCell key={i} className="text-center px-1">
-                            {takenRecord?.taken ? (
+                            {getMedicationAdherence(med, logs, patient.day).isAsNeeded ? (
+                              <span className="text-[10px] text-slate-400">As needed</span>
+                            ) : expectedDoses > 1 && medicationRecords.length > 0 ? (
+                              <span className="text-[10px] font-semibold text-slate-600 dark:text-slate-300">{takenDoses}/{expectedDoses}</span>
+                            ) : takenRecord?.taken ? (
                               <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 mx-auto" />
+                            ) : takenRecord ? (
+                              <span className="text-[10px] font-bold text-red-500">Missed</span>
                             ) : (
-                              <div className="w-4 h-4 rounded-full border-2 border-slate-200 dark:border-slate-700 mx-auto" />
+                              <span className="text-[10px] text-slate-400">No record</span>
                             )}
                           </TableCell>
                         );
@@ -311,6 +336,13 @@ export default function PatientDetail() {
                   ))}
                 </TableBody>
               </Table>
+              <div className="border-t border-slate-100 px-4 py-3 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+                Weekly adherence:{' '}
+                {care_plan.medications.map((med) => {
+                  const result = getMedicationAdherence(med, logs, patient.day);
+                  return `${med.name}: ${result.isAsNeeded ? 'As needed' : result.percentage == null ? 'No record' : `${result.percentage}% (${result.taken}/${result.scheduled})`}`;
+                }).join(' · ')}
+              </div>
             </CardContent>
           </Card>
           

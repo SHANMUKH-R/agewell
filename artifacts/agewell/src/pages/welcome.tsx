@@ -1,6 +1,14 @@
-import { useLocation } from 'wouter';
+import { Link, useLocation } from 'wouter';
+import { useRef } from 'react';
 import { useAccessibility, type TextScale } from '@/lib/accessibility';
 import { Heart, Eye, Glasses, Stethoscope, Users } from 'lucide-react';
+import {
+  useGetAgewellState,
+  useRunAgewellDemo,
+  getGetAgewellStateQueryKey,
+} from '@workspace/api-client-react';
+import { useQueryClient } from '@tanstack/react-query';
+import { useToast } from '@/hooks/use-toast';
 
 /**
  * "Who's using this?" — the shared-device entry point.
@@ -20,6 +28,7 @@ type Persona = {
   textScale: TextScale;
   colorblind: boolean;
   to: string;
+  patientId?: string;
 };
 
 const PERSONAS: Persona[] = [
@@ -32,6 +41,7 @@ const PERSONAS: Persona[] = [
     textScale: 'base',
     colorblind: false,
     to: '/elder',
+    patientId: 'margaret',
   },
   {
     id: 'arthur',
@@ -42,6 +52,7 @@ const PERSONAS: Persona[] = [
     textScale: 'xl',
     colorblind: false,
     to: '/elder',
+    patientId: 'patient-7',
   },
   {
     id: 'ravi',
@@ -53,6 +64,7 @@ const PERSONAS: Persona[] = [
     textScale: 'large',
     colorblind: true,
     to: '/elder',
+    patientId: 'patient-8',
   },
 ];
 
@@ -77,23 +89,54 @@ const HELPERS: Persona[] = [
       'text-indigo-700 bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400',
     textScale: 'base',
     colorblind: false,
-    to: '/',
+    to: '/clinician',
   },
 ];
 
 export default function Welcome() {
   const [, setLocation] = useLocation();
   const { setTextScale, setColorblind } = useAccessibility();
+  const { data: state } = useGetAgewellState();
+  const queryClient = useQueryClient();
+  const { toast } = useToast();
+  const selectionToken = useRef(0);
+  const switchPatient = useRunAgewellDemo();
 
-  const choose = (p: Persona) => {
+  const choose = async (p: Persona) => {
     setTextScale(p.textScale);
     setColorblind(p.colorblind);
+    if (p.patientId) {
+      const token = ++selectionToken.current;
+      const stateQueryKey = getGetAgewellStateQueryKey();
+      await queryClient.cancelQueries({ queryKey: stateQueryKey });
+      const previousState = queryClient.getQueryData<typeof state>(stateQueryKey) ?? state;
+      if (previousState) {
+        queryClient.setQueryData(getGetAgewellStateQueryKey(), {
+          ...previousState,
+          selected_patient_id: p.patientId,
+        });
+      }
+      try {
+        const updatedState = await switchPatient.mutateAsync({ data: { action: 'select', patient_id: p.patientId } });
+        if (token !== selectionToken.current) return;
+        queryClient.setQueryData(getGetAgewellStateQueryKey(), updatedState);
+      } catch (error: any) {
+        if (token === selectionToken.current && previousState) {
+          queryClient.setQueryData(getGetAgewellStateQueryKey(), previousState);
+        }
+        toast({ title: 'Could not switch patient', description: error?.message || 'Please try again.', variant: 'destructive' });
+        return;
+      }
+    }
     setLocation(p.to);
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-6 py-10">
+    <div className="min-h-[calc(100dvh-64px)] bg-[radial-gradient(circle_at_top_left,_hsl(40_90%_92%/.8),_transparent_42%),hsl(var(--background))] px-5 py-10 transition-colors dark:bg-[radial-gradient(circle_at_top_left,_hsl(30_35%_24%/.45),_transparent_42%),hsl(var(--background))] sm:px-6 sm:py-14">
       <div className="max-w-3xl mx-auto">
+        <Link href="/" className="mb-8 inline-flex items-center gap-2 text-base font-bold text-primary transition-colors hover:underline">
+          <span aria-hidden="true">←</span> Back to AgeWell
+        </Link>
         <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 text-center">
           Who's using AgeWell?
         </h1>
@@ -107,7 +150,9 @@ export default function Welcome() {
             return (
               <button
                 key={p.id}
-                onClick={() => choose(p)}
+                onClick={() => void choose(p)}
+                disabled={switchPatient.isPending}
+                aria-busy={switchPatient.isPending}
                 className="flex flex-col items-center gap-4 rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm hover:border-primary hover:shadow-md transition-all min-h-[220px] justify-center"
               >
                 <div
@@ -132,7 +177,9 @@ export default function Welcome() {
             return (
               <button
                 key={p.id}
-                onClick={() => choose(p)}
+                onClick={() => void choose(p)}
+                disabled={switchPatient.isPending}
+                aria-busy={switchPatient.isPending}
                 className="flex items-center gap-4 rounded-2xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:border-primary transition-all"
               >
                 <div

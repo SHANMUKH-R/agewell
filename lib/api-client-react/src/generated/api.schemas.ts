@@ -56,6 +56,8 @@ export interface Medication {
   changed_at_discharge: boolean;
   /** @nullable */
   previous_dose: string | null;
+  /** @nullable */
+  expires_at: string | null;
 }
 
 export interface Vitals {
@@ -188,6 +190,12 @@ export interface DayLog {
   bp_evening_systolic?: number | null;
   /** @nullable */
   bp_evening_diastolic?: number | null;
+  /** @nullable */
+  source?: string | null;
+  /** @nullable */
+  observed_at?: string | null;
+  /** @nullable */
+  last_synced_at?: string | null;
 }
 
 export type AssessmentConfidence = typeof AssessmentConfidence[keyof typeof AssessmentConfidence];

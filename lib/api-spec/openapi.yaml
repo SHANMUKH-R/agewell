@@ -690,6 +690,13 @@
               "string",
               "null"
             ]
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
           }
         },
         "required": [
@@ -698,7 +705,8 @@
           "frequency",
           "time_of_day",
           "changed_at_discharge",
-          "previous_dose"
+          "previous_dose",
+          "expires_at"
         ]
       },
       "Vitals": {
@@ -1103,6 +1111,26 @@
               "number",
               "null"
             ]
+          },
+          "source": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "last_synced_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
           }
         },
         "required": [
