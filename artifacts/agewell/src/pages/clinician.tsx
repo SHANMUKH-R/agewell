@@ -7,9 +7,11 @@ import { ShieldAlert, AlertCircle, AlertTriangle, CheckCircle2, Search, PlusCirc
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { QueryError } from '@/components/ui/query-error';
+import { useState } from 'react';
 
 export default function ClinicianDashboard() {
   const { data: state, isLoading, isError, error, refetch } = useGetAgewellState();
+  const [query, setQuery] = useState('');
 
   if (isError) return <QueryError error={error} refetch={refetch} />;
 
@@ -25,6 +27,12 @@ export default function ClinicianDashboard() {
   }
 
   const { counts, patients } = state;
+  const normalizedQuery = query.trim().toLowerCase();
+  const visiblePatients = normalizedQuery
+    ? patients.filter((patient) =>
+        [patient.name, patient.primary_condition, patient.diagnosis, patient.headline]
+          .some((value) => value.toLowerCase().includes(normalizedQuery)))
+    : patients;
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -54,12 +62,17 @@ export default function ClinicianDashboard() {
         <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">Active Monitoring ({patients.length})</h2>
         <div className="relative w-64 hidden md:block">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-          <Input placeholder="Search patients..." className="pl-9 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800" />
+          <Input
+            placeholder="Search patients..."
+            className="pl-9 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
         </div>
       </div>
 
       <div className="space-y-3">
-        {patients.map((p) => (
+        {visiblePatients.map((p) => (
           <Link key={p.id} href={`/patients/${p.id}`} className="block group">
             <Card className="overflow-hidden border-slate-200 dark:border-slate-800 hover:border-primary/30 dark:hover:border-primary/50 hover:shadow-md transition-all bg-white dark:bg-slate-900">
               <div className="flex flex-col md:flex-row">
@@ -91,6 +104,12 @@ export default function ClinicianDashboard() {
                     <div className="text-xs text-slate-500 dark:text-slate-500 mt-1 line-clamp-1">
                       {p.diagnosis}
                     </div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                      Medication adherence:{' '}
+                      {p.medication_adherence_pct == null
+                        ? 'Not applicable — PRN only'
+                        : `${p.medication_adherence_pct}% (${p.medication_missed} missed of ${p.medication_scheduled} scheduled)`}
+                    </div>
                   </div>
 
                   <div className="shrink-0 flex items-center justify-end w-full md:w-32">
@@ -106,9 +125,9 @@ export default function ClinicianDashboard() {
             </Card>
           </Link>
         ))}
-        {patients.length === 0 && (
+        {visiblePatients.length === 0 && (
           <div className="text-center py-12 text-slate-500 dark:text-slate-400 border border-dashed rounded-xl border-slate-300 dark:border-slate-700">
-            No patients currently monitored.
+            {patients.length === 0 ? 'No patients currently monitored.' : 'No patients match this search.'}
           </div>
         )}
       </div>

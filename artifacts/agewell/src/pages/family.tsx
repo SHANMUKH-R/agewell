@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getLevelColor } from '@/lib/utils';
 import { QueryError } from '@/components/ui/query-error';
 import { OverallHealth, VitalsGrid } from '@/components/HealthVisuals';
-import { getMedicationAdherence } from '@/lib/health-data';
+import { getMedicationAdherence, getMedicationInstruction } from '@/lib/health-data';
 import { Phone, Pill, UserRound } from 'lucide-react';
 
 export default function FamilyView() {
@@ -60,7 +60,7 @@ export default function FamilyView() {
               return (
                 <div key={medication.name} className="space-y-1">
                   <div className="flex justify-between gap-3 text-sm font-medium">
-                    <span className="truncate">{medication.name}</span>
+                    <span className="truncate">{getMedicationInstruction(medication, care_plan.medications.indexOf(medication))} · {medication.name}</span>
                     <span>{adherence.isAsNeeded ? 'As needed' : adherence.percentage == null ? 'No record' : `${adherence.percentage}%`}</span>
                   </div>
                   <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">

@@ -33,6 +33,9 @@ export const GetAgewellStateResponse = zod.object({
   "headline": zod.string(),
   "who_should_act": zod.enum(['patient', 'caregiver', 'pharmacist', 'nurse', 'physician', 'emergency']),
   "ai_mode": zod.enum(['live', 'cached'])
+  ,"medication_adherence_pct": zod.number().int().nullable()
+  ,"medication_scheduled": zod.number().int()
+  ,"medication_missed": zod.number().int()
 }))
 })
 

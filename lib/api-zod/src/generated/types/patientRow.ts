@@ -20,4 +20,7 @@ export interface PatientRow {
   headline: string;
   who_should_act: Actor;
   ai_mode: PatientRowAiMode;
+  medication_adherence_pct: number | null;
+  medication_scheduled: number;
+  medication_missed: number;
 }

@@ -67,33 +67,36 @@
 
 /* LIGHT MODE */
 :root {
+  /* Warm off-white background */
   --background: 40 33% 98%;
+  /* Deep warm text */
   --foreground: 25 30% 14%;
-  
+
   --border: 35 22% 87%;
   --input: 35 22% 87%;
   --ring: 24 35% 23%;
-  
+
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-  --card-border: 35 22% 87%;
-  
+  --card-foreground: 25 30% 14%;
+  --card-border: 35 22% 90%;
+
   --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
-  --popover-border: 214 32% 91%;
-  
+  --popover-foreground: 25 30% 14%;
+  --popover-border: 35 22% 90%;
+
+  /* Primary: Trustworthy, calm warm slate/brown */
   --primary: 24 35% 23%;
   --primary-foreground: 40 33% 98%;
-  
+
   --secondary: 38 35% 93%;
   --secondary-foreground: 25 30% 14%;
-  
-  --muted: 38 25% 93%;
-  --muted-foreground: 25 14% 40%;
-  
+
+  --muted: 38 25% 94%;
+  --muted-foreground: 25 14% 45%;
+
   --accent: 166 48% 33%;
   --accent-foreground: 0 0% 100%;
-  
+
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
@@ -102,48 +105,49 @@
   --severity-orange: 24 95% 53%;
   --severity-red: 0 84% 60%;
 
-  --sidebar: 210 33% 99%;
-  --sidebar-foreground: 222 47% 11%;
-  --sidebar-border: 214 32% 91%;
-  --sidebar-primary: 215 25% 27%;
-  --sidebar-primary-foreground: 210 40% 98%;
-  --sidebar-accent: 210 40% 96%;
-  --sidebar-accent-foreground: 222 47% 11%;
-  --sidebar-ring: 215 25% 27%;
+  --sidebar: 40 33% 98%;
+  --sidebar-foreground: 25 30% 14%;
+  --sidebar-border: 35 22% 87%;
+  --sidebar-primary: 24 35% 23%;
+  --sidebar-primary-foreground: 40 33% 98%;
+  --sidebar-accent: 38 35% 93%;
+  --sidebar-accent-foreground: 25 30% 14%;
+  --sidebar-ring: 24 35% 23%;
 
   --app-font-sans: 'DM Sans', system-ui, sans-serif;
   --app-font-mono: 'Spline Sans Mono', monospace;
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 }
 
 .dark {
-  --background: 25 28% 12%;
-  --foreground: 40 33% 98%;
-  
-  --border: 25 20% 24%;
-  --input: 25 20% 24%;
+  /* Soft dark mode, avoiding pure blacks */
+  --background: 25 25% 10%;
+  --foreground: 40 30% 92%;
+
+  --border: 25 20% 18%;
+  --input: 25 20% 18%;
   --ring: 212.7 26.8% 83.9%;
-  
-  --card: 25 28% 12%;
-  --card-foreground: 40 33% 98%;
-  --card-border: 25 20% 24%;
-  
-  --popover: 222 47% 11%;
-  --popover-foreground: 210 40% 98%;
-  --popover-border: 217 33% 17%;
-  
-  --primary: 40 33% 98%;
+
+  --card: 25 23% 13%;
+  --card-foreground: 40 30% 92%;
+  --card-border: 25 20% 18%;
+
+  --popover: 25 23% 13%;
+  --popover-foreground: 40 30% 92%;
+  --popover-border: 25 20% 18%;
+
+  --primary: 40 30% 92%;
   --primary-foreground: 25 28% 12%;
-  
-  --secondary: 25 20% 24%;
-  --secondary-foreground: 40 33% 98%;
-  
-  --muted: 25 20% 24%;
-  --muted-foreground: 35 18% 72%;
-  
+
+  --secondary: 25 20% 18%;
+  --secondary-foreground: 40 30% 92%;
+
+  --muted: 25 20% 16%;
+  --muted-foreground: 35 18% 65%;
+
   --accent: 166 48% 42%;
   --accent-foreground: 210 40% 98%;
-  
+
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
@@ -151,16 +155,19 @@
   --severity-yellow: 45 93% 37%;
   --severity-orange: 24 95% 43%;
   --severity-red: 0 84% 50%;
+
+  --sidebar: 25 25% 10%;
+  --sidebar-foreground: 40 30% 92%;
+  --sidebar-border: 25 20% 18%;
+  --sidebar-primary: 40 30% 92%;
+  --sidebar-primary-foreground: 25 25% 10%;
+  --sidebar-accent: 25 20% 18%;
+  --sidebar-accent-foreground: 40 30% 92%;
+  --sidebar-ring: 40 30% 92%;
 }
 
 /*
  * Colorblind-safe severity ramp.
- * Toggled by the Elder accessibility profile, which sets data-palette="cb" on
- * <html>. Because every severity signal in the app resolves through these four
- * CSS variables, this single block recolors dots, pills, and chips everywhere
- * without touching any component. Hues chosen from the Okabe-Ito palette
- * (blue / amber / vermillion / magenta) to stay distinguishable across the
- * common types of color vision deficiency.
  */
 html[data-palette='cb'] {
   --severity-green: 201 100% 35%; /* blue — "good" */
@@ -179,7 +186,28 @@ html[data-palette='cb'].dark {
   * {
     @apply border-border;
   }
+
+  html {
+    /* Smooth global transition for font-size scale */
+    transition: font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    html {
+      transition: none !important;
+    }
   }
 }

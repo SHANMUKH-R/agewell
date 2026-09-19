@@ -36,8 +36,8 @@ export class AgewellStore {
   const timestamp=now();
   p.cases.push({id:`case-${p.care_plan.patient.id}-${a.day}-${p.cases.length+1}`,patient_id:p.care_plan.patient.id,day:a.day,level:a.level,headline:a.headline,who_should_act:a.who_should_act,state:"NOTIFIED",events:[{timestamp,state:"DETECTED",actor:"system",note:"Risk detected from recorded observations."},{timestamp,state:"NOTIFIED",actor:"system",note:`SIMULATED notification to ${a.who_should_act}; no message sent and no emergency service contacted.`}],resolution_check:{status:"OPEN",reason:"Correct-role acknowledgement and action, followed by recovery verification, are required.",next_check_hours:a.level==="RED"?0:4}});
  }
- state():Dashboard {
-  const patients=[...this.patients.values()].map(p=>{const a=p.assessments[p.day-1];return {id:p.care_plan.patient.id,name:p.care_plan.patient.name,age:p.care_plan.patient.age,primary_condition:p.care_plan.primary_condition,diagnosis:p.care_plan.discharge_diagnoses.join("; "),day:p.day,level:a.level,headline:a.headline,who_should_act:a.who_should_act,ai_mode:a.ai_mode};}).sort((a,b)=>rank[b.level]-rank[a.level]||a.name.localeCompare(b.name));
+  state():Dashboard {
+  const patients=[...this.patients.values()].map(p=>{const a=p.assessments[p.day-1];const records=p.logs.slice(0,p.day).flatMap(l=>l.meds_taken);const scheduled=records.length;const taken=records.filter(m=>m.taken).length;return {id:p.care_plan.patient.id,name:p.care_plan.patient.name,age:p.care_plan.patient.age,primary_condition:p.care_plan.primary_condition,diagnosis:p.care_plan.discharge_diagnoses.join("; "),day:p.day,level:a.level,headline:a.headline,who_should_act:a.who_should_act,ai_mode:a.ai_mode,medication_adherence_pct:scheduled?Math.round(taken/scheduled*100):null,medication_scheduled:scheduled,medication_missed:records.filter(m=>!m.taken).length};}).sort((a,b)=>rank[b.level]-rank[a.level]||a.name.localeCompare(b.name));
   const counts={GREEN:0,YELLOW:0,ORANGE:0,RED:0};patients.forEach(p=>counts[p.level]++);
   return {synthetic:true,selected_patient_id:this.selected,ai_mode:patients.find(p=>p.id===this.selected)?.ai_mode??"cached",counts,patients};
  }
@@ -55,7 +55,12 @@ export class AgewellStore {
   const p=this.get(id);this.selected=id;
   if(action==="select")return this.state();
   const target=action==="jump"?7:Math.min(p.day+1,7);
-  while(p.day<target){p.day++;this.record(p,await assess(p.care_plan,p.logs.slice(0,p.day)));}
+  while(p.day<target){
+   const nextDay=p.day+1;
+   const assessment=await assess(p.care_plan,p.logs.slice(0,nextDay));
+   p.day=nextDay;
+   this.record(p,assessment);
+  }
   return this.state();
  }
  async log(id:string,fields:LogInput["fields"]){
@@ -73,8 +78,11 @@ export class AgewellStore {
    const normalize=(s:string)=>s.toLowerCase().replace(/\s+/g,"").trim();
    v.med_name=med.name;v.expected_dose=med.dose;v.mismatch=v.checked&&normalize(v.label_dose)!==normalize(med.dose);
   }
-  Object.assign(day,update);
-  this.record(p,await assess(p.care_plan,p.logs.slice(0,p.day)));
+   const candidateDay={...structuredClone(day),...update};
+   const candidateLogs=[...p.logs.slice(0,p.day-1),candidateDay];
+   const assessment=await assess(p.care_plan,candidateLogs);
+   Object.assign(day,update);
+   this.record(p,assessment);
   for(const c of p.cases)if(c.state==="ACTED")c.resolution_check=this.check(p,c);
   return this.detail(id);
  }

@@ -12,12 +12,11 @@ import {
  *
  * The profile is deliberately client-side and persisted to localStorage so a
  * shared device (e.g. a kitchen tablet) remembers the last person who used it.
- * It intentionally does NOT touch the risk engine, the care plan, or any
- * clinical data — it only changes how the same information is presented.
  */
 
 export type TextScale = 'base' | 'large' | 'xl';
 
+// Provided for backward compatibility for anything expecting a numerical zoom factor
 const ZOOM: Record<TextScale, number> = {
   base: 1,
   large: 1.15,
@@ -28,7 +27,7 @@ type AccessibilityValue = {
   textScale: TextScale;
   setTextScale: (scale: TextScale) => void;
   cycleTextScale: () => void;
-  /** Numeric zoom factor for the current text scale. */
+  /** Numeric zoom factor for the current text scale (legacy). */
   zoom: number;
   colorblind: boolean;
   setColorblind: (on: boolean) => void;
@@ -96,13 +95,19 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Reflect the palette choice on <html> so the CSS override in index.css
-  // can recolor every severity signal (dots, pills, chips) at once.
+  // Reflect the palette choice and font scale on <html>
   useEffect(() => {
     const root = document.documentElement;
     if (colorblind) root.setAttribute('data-palette', 'cb');
     else root.removeAttribute('data-palette');
-  }, [colorblind]);
+
+    // Scale rem values for the whole application globally based on text scale
+    // This achieves the zoom requirement organically across layouts without using CSS zoom
+    // We use percentages so we respect the user's browser default font size settings.
+    if (textScale === 'base') root.style.fontSize = '100%';
+    else if (textScale === 'large') root.style.fontSize = '112.5%';
+    else if (textScale === 'xl') root.style.fontSize = '125%';
+  }, [colorblind, textScale]);
 
   const stop = useCallback(() => {
     if (!ttsSupported) return;

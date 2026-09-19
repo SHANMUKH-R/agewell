@@ -139,7 +139,7 @@
           "meds_taken": [
             {
               "med_name": "Metoprolol succinate",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -155,7 +155,7 @@
             {
               "med_name": "Metformin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             },
             {
               "med_name": "Metformin",
@@ -213,7 +213,7 @@
             {
               "med_name": "Metformin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             },
             {
               "med_name": "Metformin",
@@ -271,7 +271,7 @@
             {
               "med_name": "Metformin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             },
             {
               "med_name": "Metformin",
@@ -329,7 +329,7 @@
             {
               "med_name": "Metformin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             },
             {
               "med_name": "Metformin",
@@ -387,7 +387,7 @@
             {
               "med_name": "Metformin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             },
             {
               "med_name": "Metformin",
@@ -447,7 +447,7 @@
             {
               "med_name": "Metformin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             },
             {
               "med_name": "Metformin",
@@ -509,7 +509,7 @@
             {
               "med_name": "Metformin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             },
             {
               "med_name": "Metformin",
@@ -623,7 +623,13 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 1800,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": false,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -782,7 +788,13 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 3005,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -924,7 +936,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -1042,6 +1054,11 @@
               "med_name": "Glipizide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -1071,6 +1088,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 2937,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -1269,11 +1291,6 @@
           "activity_steps": 2146,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -1312,14 +1329,14 @@
           "activity_steps": 2387,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -1350,7 +1367,7 @@
           "activity_steps": 2628,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
@@ -1389,7 +1406,7 @@
           "meds_taken": [
             {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -1425,11 +1442,6 @@
           "sleep_hours": 6.8,
           "activity_steps": 3110,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -1469,11 +1481,6 @@
           "activity_steps": 3351,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -1512,14 +1519,14 @@
           "activity_steps": 3592,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -1621,7 +1628,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -1684,7 +1691,13 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 2801,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -1925,13 +1938,18 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -1961,6 +1979,16 @@
           "sleep_hours": 6.4,
           "activity_steps": 2733,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -2132,6 +2160,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -2161,6 +2194,16 @@
           "sleep_hours": 6.8,
           "activity_steps": 3938,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -2282,6 +2325,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 2665,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": false,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -2415,6 +2463,11 @@
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Insulin glargine",
+              "taken": true,
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -2446,6 +2499,11 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
             },
@@ -2482,6 +2540,11 @@
           "sleep_hours": 6.8,
           "activity_steps": 3870,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -2635,7 +2698,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -2764,7 +2827,13 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 3802,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -2938,11 +3007,6 @@
           "activity_steps": 3011,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -2976,13 +3040,8 @@
           "activity_steps": 3252,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -3014,7 +3073,7 @@
           "activity_steps": 3493,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             }
@@ -3080,11 +3139,6 @@
           "activity_steps": 3975,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -3118,11 +3172,6 @@
           "activity_steps": 2016,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -3155,11 +3204,6 @@
           "sleep_hours": 6.4,
           "activity_steps": 2257,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -3290,6 +3334,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -3321,6 +3370,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -3357,6 +3411,11 @@
           "sleep_hours": 6.8,
           "activity_steps": 3666,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -3397,7 +3456,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -3490,6 +3549,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -3521,6 +3585,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -3629,7 +3698,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -3664,7 +3733,18 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 3598,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -3843,7 +3923,18 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 2603,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -3951,6 +4042,11 @@
           "activity_steps": 3530,
           "meds_taken": [
             {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
@@ -3985,7 +4081,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -4101,6 +4197,11 @@
               "med_name": "Glipizide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -4130,6 +4231,11 @@
           "sleep_hours": 7.2,
           "activity_steps": 2535,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -4291,12 +4397,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -4339,11 +4440,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -4391,9 +4487,14 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Budesonide",
+              "taken": true,
+              "time": "18:00"
             }
           ],
           "med_verification": {
@@ -4467,7 +4568,7 @@
           "activity_steps": 2467,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             },
@@ -4515,11 +4616,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -4559,11 +4655,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -4674,13 +4765,7 @@
           "pain_score": 6,
           "sleep_hours": 6,
           "activity_steps": 3876,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -4707,13 +4792,7 @@
           "pain_score": 6,
           "sleep_hours": 6.4,
           "activity_steps": 1917,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -4740,13 +4819,7 @@
           "pain_score": 5,
           "sleep_hours": 6.8,
           "activity_steps": 2158,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -4800,13 +4873,7 @@
           "pain_score": 5,
           "sleep_hours": 6,
           "activity_steps": 2640,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -4833,13 +4900,7 @@
           "pain_score": 4,
           "sleep_hours": 6.4,
           "activity_steps": 2881,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -4866,13 +4927,7 @@
           "pain_score": 4,
           "sleep_hours": 6.8,
           "activity_steps": 3122,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -4981,7 +5036,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -5021,6 +5076,11 @@
               "med_name": "Amlodipine",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -5050,6 +5110,11 @@
           "sleep_hours": 7.2,
           "activity_steps": 2331,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -5201,6 +5266,11 @@
               "med_name": "Amlodipine",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -5329,6 +5399,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -5361,6 +5436,16 @@
           "sleep_hours": 7.2,
           "activity_steps": 2263,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -5401,7 +5486,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -5509,6 +5594,11 @@
               "med_name": "Spironolactone",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Empagliflozin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -5549,6 +5639,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -5581,6 +5676,16 @@
           "sleep_hours": 6,
           "activity_steps": 3468,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -5688,7 +5793,13 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 2195,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -5751,7 +5862,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -5847,7 +5958,13 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 3400,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -5991,11 +6108,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -6029,11 +6141,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -6065,12 +6172,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -6135,7 +6237,7 @@
           "activity_steps": 3332,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             }
@@ -6171,11 +6273,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -6207,11 +6304,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -6332,11 +6424,6 @@
           "activity_steps": 2541,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -6375,14 +6462,14 @@
           "activity_steps": 2782,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -6413,8 +6500,8 @@
           "activity_steps": 3023,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
+              "med_name": "Aspirin",
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -6489,11 +6576,6 @@
           "activity_steps": 3505,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -6531,11 +6613,6 @@
           "sleep_hours": 6.8,
           "activity_steps": 3746,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -6575,14 +6652,14 @@
           "activity_steps": 3987,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -6684,7 +6761,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -6747,7 +6824,13 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 3196,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -6988,13 +7071,18 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -7024,6 +7112,16 @@
           "sleep_hours": 6,
           "activity_steps": 3128,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -7195,6 +7293,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -7224,6 +7327,16 @@
           "sleep_hours": 6.4,
           "activity_steps": 2133,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -7345,6 +7458,11 @@
           "sleep_hours": 6,
           "activity_steps": 3060,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": false,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -7478,6 +7596,11 @@
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Insulin glargine",
+              "taken": true,
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -7509,6 +7632,11 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
             },
@@ -7545,6 +7673,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 2065,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -7698,7 +7831,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -7827,7 +7960,13 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 1997,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -8001,13 +8140,8 @@
           "activity_steps": 3406,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -8038,11 +8172,6 @@
           "sleep_hours": 7.2,
           "activity_steps": 3647,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -8077,7 +8206,7 @@
           "activity_steps": 3888,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             }
@@ -8143,11 +8272,6 @@
           "activity_steps": 2170,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -8181,11 +8305,6 @@
           "activity_steps": 2411,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -8218,11 +8337,6 @@
           "sleep_hours": 6,
           "activity_steps": 2652,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -8346,11 +8460,16 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
               "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
               "taken": true,
               "time": "08:00"
             }
@@ -8388,6 +8507,11 @@
               "time": "08:00"
             },
             {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Hydrochlorothiazide",
               "taken": true,
               "time": "08:00"
@@ -8420,6 +8544,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 1861,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -8553,6 +8682,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -8584,6 +8718,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -8692,7 +8831,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -8727,7 +8866,18 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 3993,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -8906,7 +9056,18 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 2998,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -9013,6 +9174,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 3925,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": false,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -9164,6 +9330,11 @@
               "med_name": "Glipizide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -9193,6 +9364,11 @@
           "sleep_hours": 6.8,
           "activity_steps": 2930,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -9354,12 +9530,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -9402,11 +9573,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -9454,9 +9620,14 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Budesonide",
+              "taken": true,
+              "time": "18:00"
             }
           ],
           "med_verification": {
@@ -9530,7 +9701,7 @@
           "activity_steps": 2862,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             },
@@ -9578,11 +9749,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -9622,11 +9788,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -9737,13 +9898,7 @@
           "pain_score": 7,
           "sleep_hours": 7.2,
           "activity_steps": 2071,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -9770,13 +9925,7 @@
           "pain_score": 7,
           "sleep_hours": 6,
           "activity_steps": 2312,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -9803,13 +9952,7 @@
           "pain_score": 6,
           "sleep_hours": 6.4,
           "activity_steps": 2553,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -9863,13 +10006,7 @@
           "pain_score": 6,
           "sleep_hours": 7.2,
           "activity_steps": 3035,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -9896,13 +10033,7 @@
           "pain_score": 5,
           "sleep_hours": 6,
           "activity_steps": 3276,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -9929,13 +10060,7 @@
           "pain_score": 5,
           "sleep_hours": 6.4,
           "activity_steps": 3517,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -10082,6 +10207,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": false,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             }
@@ -10113,6 +10243,11 @@
           "sleep_hours": 6.8,
           "activity_steps": 2726,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -10264,6 +10399,11 @@
               "med_name": "Amlodipine",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -10392,6 +10532,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -10424,6 +10569,16 @@
           "sleep_hours": 6.8,
           "activity_steps": 2658,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -10464,7 +10619,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -10572,6 +10727,11 @@
               "med_name": "Spironolactone",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Empagliflozin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -10612,6 +10772,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -10644,6 +10809,16 @@
           "sleep_hours": 7.2,
           "activity_steps": 3863,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -10751,7 +10926,13 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 2590,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -10847,7 +11028,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -10910,7 +11091,13 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 3795,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -11054,11 +11241,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -11092,11 +11274,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -11128,11 +11305,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -11198,8 +11370,8 @@
           "activity_steps": 3727,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "med_name": "Tiotropium",
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -11234,11 +11406,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -11270,11 +11437,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -11395,13 +11557,8 @@
           "activity_steps": 2936,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -11438,14 +11595,14 @@
           "activity_steps": 3177,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -11476,7 +11633,7 @@
           "activity_steps": 3418,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
@@ -11552,11 +11709,6 @@
           "activity_steps": 3900,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -11594,11 +11746,6 @@
           "sleep_hours": 6.4,
           "activity_steps": 1941,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -11638,14 +11785,14 @@
           "activity_steps": 2182,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -11747,7 +11894,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -11810,7 +11957,13 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 3591,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -12058,6 +12211,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -12087,6 +12245,16 @@
           "sleep_hours": 7.2,
           "activity_steps": 3523,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": false,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -12258,6 +12426,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -12287,6 +12460,16 @@
           "sleep_hours": 6,
           "activity_steps": 2528,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -12409,6 +12592,11 @@
           "activity_steps": 3455,
           "meds_taken": [
             {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
@@ -12491,7 +12679,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -12541,6 +12729,11 @@
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Insulin glargine",
+              "taken": true,
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -12572,6 +12765,11 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
             },
@@ -12608,6 +12806,11 @@
           "sleep_hours": 6,
           "activity_steps": 2460,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -12794,7 +12997,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -12890,7 +13093,13 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 2392,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -13064,13 +13273,8 @@
           "activity_steps": 3801,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -13101,11 +13305,6 @@
           "sleep_hours": 6.8,
           "activity_steps": 1842,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -13140,7 +13339,7 @@
           "activity_steps": 2083,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             }
@@ -13206,11 +13405,6 @@
           "activity_steps": 2565,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -13244,11 +13438,6 @@
           "activity_steps": 2806,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -13281,11 +13470,6 @@
           "sleep_hours": 7.2,
           "activity_steps": 3047,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -13416,6 +13600,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -13447,6 +13636,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -13483,6 +13677,11 @@
           "sleep_hours": 6,
           "activity_steps": 2256,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": false,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -13616,6 +13815,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -13647,6 +13851,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -13755,7 +13964,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -13790,7 +13999,18 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 2188,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -13969,7 +14189,18 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 3393,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -14076,6 +14307,11 @@
           "sleep_hours": 6,
           "activity_steps": 2120,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": false,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -14227,6 +14463,11 @@
               "med_name": "Glipizide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -14256,6 +14497,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 3325,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -14421,11 +14667,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -14465,12 +14706,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -14517,9 +14753,14 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Budesonide",
+              "taken": true,
+              "time": "18:00"
             }
           ],
           "med_verification": {
@@ -14593,7 +14834,7 @@
           "activity_steps": 3257,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             },
@@ -14641,11 +14882,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -14685,11 +14921,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -14800,13 +15031,7 @@
           "pain_score": 6,
           "sleep_hours": 6.8,
           "activity_steps": 2466,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -14833,13 +15058,7 @@
           "pain_score": 6,
           "sleep_hours": 7.2,
           "activity_steps": 2707,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -14866,13 +15085,7 @@
           "pain_score": 5,
           "sleep_hours": 6,
           "activity_steps": 2948,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -14926,13 +15139,7 @@
           "pain_score": 5,
           "sleep_hours": 6.8,
           "activity_steps": 3430,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -14959,13 +15166,7 @@
           "pain_score": 4,
           "sleep_hours": 7.2,
           "activity_steps": 3671,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -14992,13 +15193,7 @@
           "pain_score": 4,
           "sleep_hours": 6,
           "activity_steps": 3912,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -15147,6 +15342,11 @@
               "med_name": "Amlodipine",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -15176,6 +15376,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 3121,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -15211,7 +15416,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -15325,6 +15530,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             }
@@ -15455,6 +15665,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -15487,6 +15702,16 @@
           "sleep_hours": 6.4,
           "activity_steps": 3053,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -15575,7 +15800,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -15635,6 +15860,11 @@
               "med_name": "Spironolactone",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Empagliflozin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -15675,6 +15905,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -15707,6 +15942,16 @@
           "sleep_hours": 6.8,
           "activity_steps": 2058,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -15814,7 +16059,13 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 2985,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -15910,7 +16161,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -15973,7 +16224,13 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 1990,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -16115,12 +16372,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -16155,11 +16407,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -16191,11 +16438,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -16261,7 +16503,7 @@
           "activity_steps": 1922,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             }
@@ -16297,11 +16539,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -16333,11 +16570,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -16458,13 +16690,8 @@
           "activity_steps": 3331,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -16501,14 +16728,14 @@
           "activity_steps": 3572,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -16539,7 +16766,7 @@
           "activity_steps": 3813,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
@@ -16615,11 +16842,6 @@
           "activity_steps": 2095,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -16657,11 +16879,6 @@
           "sleep_hours": 6,
           "activity_steps": 2336,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -16701,14 +16918,14 @@
           "activity_steps": 2577,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -16843,7 +17060,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -16873,7 +17090,13 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 3986,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -17121,6 +17344,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -17150,6 +17378,16 @@
           "sleep_hours": 6.8,
           "activity_steps": 3918,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": false,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -17321,6 +17559,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -17350,6 +17593,16 @@
           "sleep_hours": 7.2,
           "activity_steps": 2923,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -17472,6 +17725,11 @@
           "activity_steps": 3850,
           "meds_taken": [
             {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
@@ -17511,7 +17769,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -17604,6 +17862,11 @@
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Insulin glargine",
+              "taken": true,
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -17635,6 +17898,11 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
             },
@@ -17671,6 +17939,11 @@
           "sleep_hours": 7.2,
           "activity_steps": 2855,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -17857,7 +18130,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -17953,7 +18226,13 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 2787,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -18127,11 +18406,6 @@
           "activity_steps": 1996,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -18165,13 +18439,8 @@
           "activity_steps": 2237,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -18203,7 +18472,7 @@
           "activity_steps": 2478,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             }
@@ -18269,11 +18538,6 @@
           "activity_steps": 2960,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -18307,11 +18571,6 @@
           "activity_steps": 3201,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -18344,11 +18603,6 @@
           "sleep_hours": 6.8,
           "activity_steps": 3442,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -18472,11 +18726,16 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
               "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
               "taken": true,
               "time": "08:00"
             }
@@ -18514,6 +18773,11 @@
               "time": "08:00"
             },
             {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Hydrochlorothiazide",
               "taken": true,
               "time": "08:00"
@@ -18546,6 +18810,11 @@
           "sleep_hours": 7.2,
           "activity_steps": 2651,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -18679,6 +18948,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -18710,6 +18984,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -18818,7 +19097,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -18853,7 +19132,18 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 2583,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -19032,7 +19322,18 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 3788,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -19139,6 +19440,11 @@
           "sleep_hours": 7.2,
           "activity_steps": 2515,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": false,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -19290,6 +19596,11 @@
               "med_name": "Glipizide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -19319,6 +19630,11 @@
           "sleep_hours": 6,
           "activity_steps": 3720,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -19484,11 +19800,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -19532,11 +19843,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -19576,13 +19882,18 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
+              "taken": false,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Budesonide",
               "taken": true,
-              "time": "08:00"
+              "time": "18:00"
             }
           ],
           "med_verification": {
@@ -19656,7 +19967,7 @@
           "activity_steps": 3652,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             },
@@ -19704,11 +20015,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -19748,11 +20054,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -19863,13 +20164,7 @@
           "pain_score": 7,
           "sleep_hours": 6.4,
           "activity_steps": 2861,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -19896,13 +20191,7 @@
           "pain_score": 7,
           "sleep_hours": 6.8,
           "activity_steps": 3102,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -19929,13 +20218,7 @@
           "pain_score": 6,
           "sleep_hours": 7.2,
           "activity_steps": 3343,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -19989,13 +20272,7 @@
           "pain_score": 6,
           "sleep_hours": 6.4,
           "activity_steps": 3825,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -20022,13 +20299,7 @@
           "pain_score": 5,
           "sleep_hours": 6.8,
           "activity_steps": 1866,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -20055,13 +20326,7 @@
           "pain_score": 5,
           "sleep_hours": 7.2,
           "activity_steps": 2107,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -20210,6 +20475,11 @@
               "med_name": "Amlodipine",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -20239,6 +20509,11 @@
           "sleep_hours": 6,
           "activity_steps": 3516,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -20312,7 +20587,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -20388,6 +20663,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             }
@@ -20518,6 +20798,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -20550,6 +20835,16 @@
           "sleep_hours": 6,
           "activity_steps": 3448,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -20698,6 +20993,11 @@
               "med_name": "Spironolactone",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Empagliflozin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -20729,13 +21029,18 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             },
             {
               "med_name": "Empagliflozin",
@@ -20770,6 +21075,16 @@
           "sleep_hours": 6.4,
           "activity_steps": 2453,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -20877,7 +21192,13 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 3380,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": false,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -21036,7 +21357,13 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 2385,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -21178,12 +21505,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -21218,11 +21540,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -21254,11 +21571,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -21324,7 +21636,7 @@
           "activity_steps": 2317,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             }
@@ -21360,11 +21672,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -21396,11 +21703,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -21521,13 +21823,8 @@
           "activity_steps": 3726,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -21564,14 +21861,14 @@
           "activity_steps": 3967,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -21602,7 +21899,7 @@
           "activity_steps": 2008,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
@@ -21678,11 +21975,6 @@
           "activity_steps": 2490,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -21720,11 +22012,6 @@
           "sleep_hours": 7.2,
           "activity_steps": 2731,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -21764,14 +22051,14 @@
           "activity_steps": 2972,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -21873,7 +22160,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -21936,7 +22223,13 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 2181,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -22184,6 +22477,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -22213,6 +22511,16 @@
           "sleep_hours": 6.4,
           "activity_steps": 2113,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -22248,7 +22556,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -22384,6 +22692,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -22413,6 +22726,16 @@
           "sleep_hours": 6.8,
           "activity_steps": 3318,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -22535,6 +22858,11 @@
           "activity_steps": 2045,
           "meds_taken": [
             {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
@@ -22574,7 +22902,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -22667,6 +22995,11 @@
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Insulin glargine",
+              "taken": true,
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -22698,6 +23031,11 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
             },
@@ -22734,6 +23072,11 @@
           "sleep_hours": 6.8,
           "activity_steps": 3250,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -22887,7 +23230,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -23016,7 +23359,13 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 3182,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -23190,13 +23539,8 @@
           "activity_steps": 2391,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -23227,11 +23571,6 @@
           "sleep_hours": 6,
           "activity_steps": 2632,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -23266,7 +23605,7 @@
           "activity_steps": 2873,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             }
@@ -23332,11 +23671,6 @@
           "activity_steps": 3355,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -23370,11 +23704,6 @@
           "activity_steps": 3596,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -23407,11 +23736,6 @@
           "sleep_hours": 6.4,
           "activity_steps": 3837,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -23535,11 +23859,16 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
               "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
               "taken": true,
               "time": "08:00"
             }
@@ -23577,6 +23906,11 @@
               "time": "08:00"
             },
             {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Hydrochlorothiazide",
               "taken": true,
               "time": "08:00"
@@ -23609,6 +23943,11 @@
           "sleep_hours": 6.8,
           "activity_steps": 3046,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -23742,6 +24081,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -23773,6 +24117,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -23881,7 +24230,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -23916,7 +24265,18 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 2978,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -24095,7 +24455,18 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 1983,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -24203,6 +24574,11 @@
           "activity_steps": 2910,
           "meds_taken": [
             {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
@@ -24237,7 +24613,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -24353,6 +24729,11 @@
               "med_name": "Glipizide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -24382,6 +24763,11 @@
           "sleep_hours": 7.2,
           "activity_steps": 1915,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -24543,12 +24929,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -24591,11 +24972,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -24643,9 +25019,14 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Budesonide",
+              "taken": true,
+              "time": "18:00"
             }
           ],
           "med_verification": {
@@ -24719,7 +25100,7 @@
           "activity_steps": 1847,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             },
@@ -24767,11 +25148,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -24811,11 +25187,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -24926,13 +25297,7 @@
           "pain_score": 6,
           "sleep_hours": 6,
           "activity_steps": 3256,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -24959,13 +25324,7 @@
           "pain_score": 6,
           "sleep_hours": 6.4,
           "activity_steps": 3497,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -24992,13 +25351,7 @@
           "pain_score": 5,
           "sleep_hours": 6.8,
           "activity_steps": 3738,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -25052,13 +25405,7 @@
           "pain_score": 5,
           "sleep_hours": 6,
           "activity_steps": 2020,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -25085,13 +25432,7 @@
           "pain_score": 4,
           "sleep_hours": 6.4,
           "activity_steps": 2261,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -25118,13 +25459,7 @@
           "pain_score": 4,
           "sleep_hours": 6.8,
           "activity_steps": 2502,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -25273,6 +25608,11 @@
               "med_name": "Amlodipine",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -25302,6 +25642,11 @@
           "sleep_hours": 7.2,
           "activity_steps": 3911,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -25375,7 +25720,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -25451,6 +25796,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             }
@@ -25574,13 +25924,18 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             },
             {
               "med_name": "Empagliflozin",
@@ -25617,6 +25972,16 @@
           "sleep_hours": 7.2,
           "activity_steps": 3843,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -25765,6 +26130,11 @@
               "med_name": "Spironolactone",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Empagliflozin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -25805,6 +26175,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -25837,6 +26212,16 @@
           "sleep_hours": 6,
           "activity_steps": 2848,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -25944,7 +26329,13 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 3775,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": false,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -26105,7 +26496,13 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 2780,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -26249,11 +26646,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -26285,12 +26677,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -26323,11 +26710,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -26395,7 +26777,7 @@
           "activity_steps": 2712,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             }
@@ -26431,11 +26813,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -26467,11 +26844,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -26592,11 +26964,6 @@
           "activity_steps": 1921,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -26635,14 +27002,14 @@
           "activity_steps": 2162,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -26673,8 +27040,8 @@
           "activity_steps": 2403,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
+              "med_name": "Aspirin",
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -26751,11 +27118,6 @@
           "activity_steps": 2885,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -26793,11 +27155,6 @@
           "sleep_hours": 6.8,
           "activity_steps": 3126,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -26837,14 +27194,14 @@
           "activity_steps": 3367,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -27009,7 +27366,13 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 2576,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": false,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -27259,6 +27622,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -27288,6 +27656,16 @@
           "sleep_hours": 6,
           "activity_steps": 2508,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -27323,7 +27701,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -27459,6 +27837,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -27490,6 +27873,16 @@
           "sleep_hours": 6.4,
           "activity_steps": 3713,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -27612,6 +28005,11 @@
           "activity_steps": 2440,
           "meds_taken": [
             {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
@@ -27694,7 +28092,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -27744,6 +28142,11 @@
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Insulin glargine",
+              "taken": true,
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -27775,6 +28178,11 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
             },
@@ -27811,6 +28219,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 3645,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -27966,7 +28379,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -28097,7 +28510,13 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 3577,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -28271,13 +28690,8 @@
           "activity_steps": 2786,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -28308,11 +28722,6 @@
           "sleep_hours": 7.2,
           "activity_steps": 3027,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -28349,7 +28758,7 @@
           "activity_steps": 3268,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             }
@@ -28415,11 +28824,6 @@
           "activity_steps": 3750,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -28453,11 +28857,6 @@
           "activity_steps": 3991,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -28490,11 +28889,6 @@
           "sleep_hours": 6,
           "activity_steps": 2032,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -28625,6 +29019,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -28656,6 +29055,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": false,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -28692,6 +29096,11 @@
           "sleep_hours": 6.4,
           "activity_steps": 3441,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -28827,6 +29236,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -28858,6 +29272,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -28966,7 +29385,7 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -29001,7 +29420,18 @@
           "pain_score": null,
           "sleep_hours": 6.4,
           "activity_steps": 3373,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -29182,7 +29612,18 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 2378,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -29290,6 +29731,11 @@
           "activity_steps": 3305,
           "meds_taken": [
             {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
@@ -29324,7 +29770,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -29440,6 +29886,11 @@
               "med_name": "Glipizide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -29471,6 +29922,11 @@
           "sleep_hours": 6.8,
           "activity_steps": 2310,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -29636,11 +30092,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -29680,11 +30131,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -29732,9 +30178,14 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Budesonide",
+              "taken": true,
+              "time": "18:00"
             }
           ],
           "med_verification": {
@@ -29808,8 +30259,8 @@
           "activity_steps": 2242,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "med_name": "Tiotropium",
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -29856,11 +30307,6 @@
               "time": "08:00"
             },
             {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Budesonide",
               "taken": true,
               "time": "08:00"
@@ -29902,11 +30348,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             },
@@ -30017,13 +30458,7 @@
           "pain_score": 7,
           "sleep_hours": 7.2,
           "activity_steps": 3651,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -30050,13 +30485,7 @@
           "pain_score": 7,
           "sleep_hours": 6,
           "activity_steps": 3892,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -30083,13 +30512,7 @@
           "pain_score": 6,
           "sleep_hours": 6.4,
           "activity_steps": 1933,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -30143,13 +30566,7 @@
           "pain_score": 6,
           "sleep_hours": 7.2,
           "activity_steps": 2415,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -30176,13 +30593,7 @@
           "pain_score": 5,
           "sleep_hours": 6,
           "activity_steps": 2656,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -30209,13 +30620,7 @@
           "pain_score": 5,
           "sleep_hours": 6.4,
           "activity_steps": 2897,
-          "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            }
-          ],
+          "meds_taken": [],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -30326,7 +30731,7 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -30368,6 +30773,11 @@
               "med_name": "Amlodipine",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -30397,6 +30807,11 @@
           "sleep_hours": 6.8,
           "activity_steps": 2106,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -30548,6 +30963,11 @@
               "med_name": "Amlodipine",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -30667,13 +31087,18 @@
           "meds_taken": [
             {
               "med_name": "Carvedilol",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             },
             {
               "med_name": "Empagliflozin",
@@ -30708,6 +31133,16 @@
           "sleep_hours": 6.8,
           "activity_steps": 2038,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -30858,6 +31293,11 @@
               "med_name": "Spironolactone",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Empagliflozin",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -30898,6 +31338,11 @@
               "time": "18:00"
             },
             {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
               "med_name": "Empagliflozin",
               "taken": true,
               "time": "08:00"
@@ -30930,6 +31375,16 @@
           "sleep_hours": 7.2,
           "activity_steps": 3243,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -31037,7 +31492,13 @@
           "pain_score": null,
           "sleep_hours": 6.8,
           "activity_steps": 1970,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -31067,7 +31528,7 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -31198,7 +31659,13 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 3175,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -31342,11 +31809,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -31378,12 +31840,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -31416,11 +31873,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -31486,7 +31938,7 @@
           "activity_steps": 3107,
           "meds_taken": [
             {
-              "med_name": "Albuterol inhaler",
+              "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
             }
@@ -31522,11 +31974,6 @@
               "med_name": "Tiotropium",
               "taken": true,
               "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
-              "taken": true,
-              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -31558,11 +32005,6 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
-              "med_name": "Albuterol inhaler",
               "taken": true,
               "time": "08:00"
             }
@@ -31683,11 +32125,6 @@
           "activity_steps": 2316,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -31726,14 +32163,14 @@
           "activity_steps": 2557,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -31764,7 +32201,7 @@
           "activity_steps": 2798,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
@@ -31803,7 +32240,7 @@
           "meds_taken": [
             {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             },
             {
@@ -31839,11 +32276,6 @@
           "sleep_hours": 6,
           "activity_steps": 3280,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -31883,11 +32315,6 @@
           "activity_steps": 3521,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -31926,14 +32353,14 @@
           "activity_steps": 3762,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             },
             {
-              "med_name": "Aspirin",
+              "med_name": "Gabapentin",
               "taken": true,
-              "time": "08:00"
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -32098,7 +32525,13 @@
           "pain_score": null,
           "sleep_hours": 7.2,
           "activity_steps": 2971,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": false,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -32346,6 +32779,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -32375,6 +32813,16 @@
           "sleep_hours": 7.2,
           "activity_steps": 2903,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": false,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -32546,6 +32994,11 @@
               "med_name": "Carvedilol",
               "taken": true,
               "time": "18:00"
+            },
+            {
+              "med_name": "Spironolactone",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -32575,6 +33028,16 @@
           "sleep_hours": 6,
           "activity_steps": 1908,
           "meds_taken": [
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Carvedilol",
+              "taken": true,
+              "time": "18:00"
+            },
             {
               "med_name": "Spironolactone",
               "taken": true,
@@ -32696,6 +33159,11 @@
           "sleep_hours": 7.2,
           "activity_steps": 2835,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": false,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -32829,6 +33297,11 @@
               "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Insulin glargine",
+              "taken": true,
+              "time": "20:00"
             }
           ],
           "med_verification": {
@@ -32860,6 +33333,11 @@
           "meds_taken": [
             {
               "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Sitagliptin",
               "taken": true,
               "time": "08:00"
             },
@@ -32896,6 +33374,11 @@
           "sleep_hours": 6,
           "activity_steps": 1840,
           "meds_taken": [
+            {
+              "med_name": "Glipizide",
+              "taken": true,
+              "time": "08:00"
+            },
             {
               "med_name": "Sitagliptin",
               "taken": true,
@@ -33049,7 +33532,7 @@
           "meds_taken": [
             {
               "med_name": "Tiotropium",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -33178,7 +33661,13 @@
           "pain_score": null,
           "sleep_hours": 6,
           "activity_steps": 3972,
-          "meds_taken": [],
+          "meds_taken": [
+            {
+              "med_name": "Tiotropium",
+              "taken": true,
+              "time": "08:00"
+            }
+          ],
           "med_verification": {
             "checked": false,
             "label_dose": "",
@@ -33352,13 +33841,8 @@
           "activity_steps": 3181,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
-              "taken": true,
+              "taken": false,
               "time": "08:00"
             }
           ],
@@ -33389,11 +33873,6 @@
           "sleep_hours": 6.8,
           "activity_steps": 3422,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -33428,7 +33907,7 @@
           "activity_steps": 3663,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
+              "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
             }
@@ -33494,11 +33973,6 @@
           "activity_steps": 1945,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -33532,11 +34006,6 @@
           "activity_steps": 2186,
           "meds_taken": [
             {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
-            {
               "med_name": "Aspirin",
               "taken": true,
               "time": "08:00"
@@ -33569,11 +34038,6 @@
           "sleep_hours": 7.2,
           "activity_steps": 2427,
           "meds_taken": [
-            {
-              "med_name": "Acetaminophen",
-              "taken": true,
-              "time": "08:00"
-            },
             {
               "med_name": "Aspirin",
               "taken": true,
@@ -33704,6 +34168,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -33735,6 +34204,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
@@ -33771,6 +34245,11 @@
           "sleep_hours": 6,
           "activity_steps": 3836,
           "meds_taken": [
+            {
+              "med_name": "Amlodipine",
+              "taken": false,
+              "time": "08:00"
+            },
             {
               "med_name": "Losartan",
               "taken": true,
@@ -33904,6 +34383,11 @@
               "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
+            },
+            {
+              "med_name": "Hydrochlorothiazide",
+              "taken": true,
+              "time": "08:00"
             }
           ],
           "med_verification": {
@@ -33935,6 +34419,11 @@
           "meds_taken": [
             {
               "med_name": "Amlodipine",
+              "taken": true,
+              "time": "08:00"
+            },
+            {
+              "med_name": "Losartan",
               "taken": true,
               "time": "08:00"
             },
