@@ -11,6 +11,7 @@ import { QueryError } from '@/components/ui/query-error';
 import { useAccessibility } from '@/lib/accessibility';
 import { AccessibilityBar } from '@/components/AccessibilityBar';
 import { OverallHealth, VitalsGrid } from '@/components/HealthVisuals';
+import { getMedicationInstruction } from '@/lib/health-data';
 
 type ElderView = 'home' | 'recovery' | 'meds' | 'readings' | 'feelings';
 
@@ -480,8 +481,8 @@ export default function ElderApp() {
                 <div key={med.name} className="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm flex flex-col gap-6">
                   <div className="flex justify-between items-start">
                     <div>
-                      <div className="text-[28px] font-bold text-slate-900 dark:text-slate-100 leading-tight mb-1">{med.name}</div>
-                      <div className="text-[24px] text-slate-600 dark:text-slate-400 font-medium">{med.dose} • {med.time_of_day || med.frequency}</div>
+                      <div className="text-[28px] font-bold text-slate-900 dark:text-slate-100 leading-tight mb-1">{getMedicationInstruction(med, care_plan.medications.indexOf(med))}</div>
+                      <div className="text-[24px] text-slate-600 dark:text-slate-400 font-medium">{med.name}</div>
                       <div className="mt-1 text-base text-slate-500 dark:text-slate-400">
                         Expires {med.expires_at ? new Date(med.expires_at).toLocaleDateString() : 'not recorded'}
                       </div>

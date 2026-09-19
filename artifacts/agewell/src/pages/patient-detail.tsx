@@ -12,7 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { useToast } from '@/hooks/use-toast';
 import { QueryError } from '@/components/ui/query-error';
 import { OverallHealth, VitalsGrid } from '@/components/HealthVisuals';
-import { getMedicationAdherence, getMedicationDosesPerDay } from '@/lib/health-data';
+import { getMedicationAdherence, getMedicationDosesPerDay, getMedicationInstruction } from '@/lib/health-data';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
 export default function PatientDetail() {
@@ -304,7 +304,7 @@ export default function PatientDetail() {
                     <TableRow key={med.name} className="border-slate-100 dark:border-slate-800">
                       <TableCell className="font-medium text-slate-800 dark:text-slate-200">
                         <div className="flex flex-col">
-                          <span>{med.name} {med.dose}</span>
+                          <span>{getMedicationInstruction(med, care_plan.medications.indexOf(med))} · {med.name}</span>
                           {med.changed_at_discharge && (
                             <span className="text-[10px] text-amber-600 dark:text-amber-500 font-bold tracking-wider mt-0.5">CHANGED AT DISCHARGE</span>
                           )}

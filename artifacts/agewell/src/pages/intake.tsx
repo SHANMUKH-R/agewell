@@ -11,6 +11,7 @@ import { QueryError } from '@/components/ui/query-error';
 
 export default function IntakeScreen() {
   const [text, setText] = useState('');
+  const [fileStatus, setFileStatus] = useState<{name:string;state:'reading'|'success'|'error';message?:string}|null>(null);
   const [, setLocation] = useLocation();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
@@ -39,7 +40,12 @@ export default function IntakeScreen() {
 
   const handleLoadSample = async () => {
     const res = await loadSample();
-    if (res.data) setText(res.data.text);
+    if (res.data) {
+      setText(res.data.text);
+      // Loading the sample is an end-to-end demo action, not just a textarea
+      // convenience: immediately run the same extraction path as pasted text.
+      extractMutation.mutate({ data: { text: res.data.text } });
+    }
   };
 
   const handleExtract = () => {
@@ -50,14 +56,36 @@ export default function IntakeScreen() {
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    
+    const lowerName=file.name.toLowerCase();
+    if (!lowerName.endsWith('.txt') && !lowerName.endsWith('.pdf')) {
+      setFileStatus({name:file.name,state:'error',message:'Only .txt and text-based .pdf files are supported.'});
+      return;
+    }
+    if (file.size > 3 * 1024 * 1024) {
+      setFileStatus({name:file.name,state:'error',message:'File is larger than the 3 MB limit.'});
+      return;
+    }
+    setFileStatus({name:file.name,state:'reading',message:'Reading file securely…'});
     setText('');
-    
     const reader = new FileReader();
     reader.onload = (event) => {
-      const base64 = (event.target?.result as string).split(',')[1];
-      extractMutation.mutate({ data: { file_base64: base64, filename: file.name } });
+      const result=event.target?.result;
+      if(typeof result!=='string'){
+        setFileStatus({name:file.name,state:'error',message:'The file could not be read.'});
+        return;
+      }
+      const base64=result.split(',')[1];
+      if(!base64){
+        setFileStatus({name:file.name,state:'error',message:'The file could not be read.'});
+        return;
+      }
+      setFileStatus({name:file.name,state:'reading',message:'Extracting care plan…'});
+      extractMutation.mutate({ data: { file_base64: base64, filename: file.name } }, {
+        onSuccess: () => setFileStatus({name:file.name,state:'success',message:'Care plan extracted securely. In live mode, document text is processed by Anthropic.'}),
+        onError: (err:any) => setFileStatus({name:file.name,state:'error',message:err.message || 'Extraction failed.'})
+      });
     };
+    reader.onerror=()=>setFileStatus({name:file.name,state:'error',message:'The file could not be read.'});
     reader.readAsDataURL(file);
     
     if (fileInputRef.current) {
@@ -129,6 +157,13 @@ export default function IntakeScreen() {
                 </Button>
               </div>
             </div>
+            {fileStatus && (
+              <div className={`mb-3 rounded-md border px-3 py-2 text-sm ${fileStatus.state==='error' ? 'border-red-200 bg-red-50 text-red-800' : fileStatus.state==='success' ? 'border-emerald-200 bg-emerald-50 text-emerald-800' : 'border-blue-200 bg-blue-50 text-blue-800'}`} role="status">
+                <span className="font-medium">{fileStatus.name}</span>
+                <span className="ml-2">{fileStatus.message}</span>
+                {fileStatus.state==='reading' && <Loader2 className="inline-block ml-2 h-4 w-4 animate-spin" />}
+              </div>
+            )}
             
             <Textarea 
               className="min-h-[300px] font-mono text-sm leading-relaxed p-4 bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800"

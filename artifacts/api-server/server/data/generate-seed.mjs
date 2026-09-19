@@ -51,13 +51,26 @@ const rows = [
   [131, 80, 84, 156.8, 94, 98.3, ["mild fatigue", "ankle swelling", "dizziness on standing"]],
   [138, 84, 91, 157.8, 93, 98.5, ["fatigue", "ankle swelling", "dizziness on standing", "short of breath climbing stairs"]],
 ];
-function medicationTaken(p, day, medIndex) {
+function medicationTaken(p, day, medIndex, availableDay = 7, level = "GREEN") {
   const medication = p.medications[medIndex];
-  const doses = medication.frequency === "twice daily" ? 2 : 1;
+  if (/\b(as needed|prn)\b/i.test(medication.frequency)) return [];
+  const doses = /twice|two/i.test(medication.frequency) ? 2 : 1;
+  // Deterministic simulated self-report: each person has a different,
+  // believable pattern.  Every scheduled dose is represented explicitly,
+  // including missed doses; an absent record remains genuinely unknown.
+  const seed = [...p.patient.id].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  const firstScheduled = p.medications.findIndex((item) => !/\b(as needed|prn)\b/i.test(item.frequency));
+  // Keep one known miss in the visible window, but move its date by patient.
+  // Margaret's teaching scenario intentionally starts with exactly one miss.
+  const missDay = p.patient.id === "margaret"
+    ? 1
+    : Math.max(1, Math.min(availableDay, availableDay <= 2 ? 1 : 1 + (seed % (availableDay - 1))));
   return Array.from({ length: doses }, (_, doseIndex) => ({
     med_name: medication.name,
-    taken: true,
-    time: doseIndex ? "18:00" : medication.time_of_day === "evening" ? "20:00" : "08:00",
+    taken: day === missDay && medIndex === firstScheduled && doseIndex === 0
+      ? false
+      : true,
+    time: doseIndex ? "18:00" : /evening|night/i.test(medication.time_of_day || "") ? "20:00" : "08:00",
   }));
 }
 function logs(p, values = rows) {
@@ -66,7 +79,7 @@ function logs(p, values = rows) {
     day: i + 1,
     date: `2026-09-${String(13 + i).padStart(2, "0")}`,
     bp_systolic, bp_diastolic, heart_rate, weight_lb, spo2, temp_f, glucose: null, pain_score: null, sleep_hours: null, activity_steps: null,
-    meds_taken: p.medications.flatMap((_, medIndex) => medicationTaken(p, i + 1, medIndex)),
+    meds_taken: p.medications.flatMap((_, medIndex) => medicationTaken(p, i + 1, medIndex, p._availableDay || 7, p._seedLevel || "GREEN")),
     med_verification: { checked: i === 6, label_dose: i === 6 ? "50 mg" : "", expected_dose: i === 6 ? "25 mg" : "", mismatch: i === 6, med_name: "Metoprolol succinate" },
     symptoms,
     free_text_note: i === 6 ? "I think I already took the blue one this morning. Stairs were harder than usual." : "Feeling alright. Slept okay.",
@@ -120,19 +133,26 @@ function cohort(id, name, age, primary, day, level, diagnosis, index) {
   p.medications = medicationCatalog[primary].slice(0, 1 + (index % 3)).map(([name, dose, frequency], medIndex) => ({
     name, dose, frequency, time_of_day: frequency === "nightly" ? "evening" : "morning", changed_at_discharge: (index + medIndex) % 2 === 0, previous_dose: null,
     expires_at: `2027-${String(1 + ((index + medIndex) % 10)).padStart(2, "0")}-${String(5 + ((index * 3 + medIndex) % 20)).padStart(2, "0")}`,
-  }));
+  })).sort((a, b) => {
+    const order = (time) => /morning/i.test(time || "") ? 0 : /afternoon/i.test(time || "") ? 1 : /evening|night/i.test(time || "") ? 2 : 3;
+    return order(a.time_of_day) - order(b.time_of_day);
+  });
   p.monitoring_instructions = [{ what: primary === "COPD" ? "Oxygen saturation" : primary === "DIABETES" ? "Glucose" : primary === "POST_OP" ? "Temperature and wound" : "Blood pressure", frequency: "Daily", threshold_text: null }];
   p.red_flag_symptoms = ["chest pain", "confusion", "fainting"];
   const followUpDate = new Date(Date.UTC(2026, 8, 18 + (index % 18))).toISOString().slice(0, 10);
   p.follow_up = [{ provider: providers[index % providers.length], specialty: specialty[primary], due_date: followUpDate }];
   p.diet_activity_restrictions = [`Personalized ${primary.toLowerCase()} recovery plan`];
+  p._availableDay = day;
+  p._seedLevel = level;
   const ls = Array.from({ length: 7 }, (_, i) => {
     const progress = i / 6;
     const log = {
       day: i + 1, date: `2026-09-${String(13 + i).padStart(2, "0")}`,
       bp_systolic: null, bp_diastolic: null, heart_rate: null, weight_lb: null, spo2: null, temp_f: null, glucose: null,
       pain_score: null, sleep_hours: round(6 + ((index + i) % 4) * 0.4), activity_steps: 1800 + ((index * 173 + i * 241) % 2200),
-      meds_taken: p.medications.flatMap((_, medIndex) => ((index + i + medIndex) % 5 === 0 ? [] : medicationTaken(p, i + 1, medIndex))),
+      // Scheduled doses are always represented. A false record is a known
+      // miss; only PRN orders have no scheduled record.
+      meds_taken: p.medications.flatMap((_, medIndex) => medicationTaken(p, i + 1, medIndex, p._availableDay || 7, p._seedLevel || "GREEN")),
       med_verification: { checked: false, label_dose: "", expected_dose: "", mismatch: false, med_name: p.medications[0]?.name || "" },
       symptoms: (i === day - 1 && level === "YELLOW") ? [conditionSymptoms[primary][index % conditionSymptoms[primary].length]] : [],
       free_text_note: `Day ${i + 1} connected-device recovery reading for ${name}.`,
@@ -160,6 +180,8 @@ function cohort(id, name, age, primary, day, level, diagnosis, index) {
     log.source = sourceForLog(log);
     return log;
   });
+  delete p._availableDay;
+  delete p._seedLevel;
   patients.push({ care_plan: p, day, logs: ls, discharge_summary_raw: "Synthetic cohort care plan; not a real discharge record." });
 }
 cohort("robert", "Robert Vance", 81, "COPD", 4, "GREEN", "COPD exacerbation", 0);

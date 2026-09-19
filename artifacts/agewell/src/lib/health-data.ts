@@ -56,6 +56,19 @@ export function getMedicationDosesPerDay(frequency: string | null | undefined) {
   return 1;
 }
 
+/** Stable, plain-language intake wording shared by every medication view. */
+export function getMedicationInstruction(
+  medication: CarePlan['medications'][number],
+  index = 0,
+) {
+  const when = medication.time_of_day || (
+    /night/i.test(medication.frequency || '') ? 'evening' :
+    /evening/i.test(medication.frequency || '') ? 'evening' : 'morning'
+  );
+  const amount = medication.dose || 'dose not recorded';
+  return `${index + 1}. WHEN: ${when.charAt(0).toUpperCase()}${when.slice(1)} · HOW MUCH: ${amount}`;
+}
+
 export type AdherenceResult = {
   taken: number;
   scheduled: number;

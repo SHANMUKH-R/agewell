@@ -97,6 +97,16 @@ test("cohort profiles are distinct and connected-device metadata is honest",()=>
  }
  assert.equal(signatures.size,100);
 });
+test("scheduled medication profiles always expose an explicit missed dose",()=>{
+ const s=new AgewellStore();
+ for(const row of s.state().patients){
+  const p=s.get(row.id), scheduled=p.care_plan.medications.filter(m=>!/\b(prn|as needed)\b/i.test(m.frequency||""));
+  const records=p.logs.slice(0,p.day).flatMap(l=>l.meds_taken);
+  if(!scheduled.length) continue;
+  const relevant=records.filter(r=>scheduled.some(m=>m.name===r.med_name));
+  assert.ok(relevant.some(r=>!r.taken),`${row.id} should not be 100%`);
+ }
+});
 test("COPD readings use the patient's baseline while absolute floors remain emergencies",()=>{
  const s=new AgewellStore(),robert=s.get("robert"),plan=structuredClone(robert.care_plan),stable=structuredClone(robert.logs.slice(0,1));
  plan.discharge_baseline.spo2=95;stable[0].spo2=95;stable[0].symptoms=[];
@@ -115,7 +125,7 @@ test("seven day teaching scenario, dynamic counts and report",async()=>{
  }
  const d=s.detail("margaret");assert.equal(d.current_assessment.who_should_act,"pharmacist");
  assert.ok(d.current_assessment.triggered_hard_rules.includes("HR_MED_MISMATCH"));
- assert.equal(d.report.medication_adherence_pct,100);assert.equal(d.report.available,true);
+ assert.equal(d.report.medication_adherence_pct,98);assert.equal(d.report.available,true);
  assert.deepEqual(s.state().counts,{GREEN:71,YELLOW:19,ORANGE:8,RED:2});
  assert.ok(d.cases.every(c=>c.events[1].note.includes("SIMULATED")));
  await s.demo("reset");assert.equal(s.detail("margaret").day,1);
@@ -184,14 +194,65 @@ test("unsafe/malformed/provider-failure AI falls back and cannot lower hard rule
  const original=globalThis.fetch;process.env.ANTHROPIC_API_KEY="synthetic-test-key";
  const fallback=assessCached(p.care_plan,logs);
  try{
-  for(const output of [{...fallback,level:"GREEN",recommended_action:"Take 50 mg now."},{bad:true}]){
-   globalThis.fetch=async()=>new Response(JSON.stringify({content:[{type:"text",text:JSON.stringify(output)}]}));
-   const a=await assess(p.care_plan,logs);assert.equal(a.level,"RED");assert.equal(a.ai_mode,"cached");
-  }
+  const advised={...fallback,level:"GREEN",recommended_action:"Take 50 mg now."};
+  globalThis.fetch=async()=>new Response(JSON.stringify({content:[{type:"text",text:JSON.stringify(advised)}]}));
+  let a=await assess(p.care_plan,logs);
+  assert.equal(a.level,"RED");assert.equal(a.ai_mode,"live");assert.ok(!JSON.stringify(a).includes("Take 50 mg"));
+  globalThis.fetch=async()=>new Response(JSON.stringify({content:[{type:"text",text:JSON.stringify({bad:true})}]}));
+  a=await assess(p.care_plan,logs);assert.equal(a.level,"RED");assert.equal(a.ai_mode,"cached");
   globalThis.fetch=async()=>{throw new Error("network");};
   assert.equal((await assess(p.care_plan,logs)).ai_mode,"cached");
-  globalThis.fetch=async()=>new Response(JSON.stringify({content:[{type:"text",text:JSON.stringify({...fallback,level:"GREEN",rationale:["Oxygen saturation is 87%."]})}]}));
-  const a=await assess(p.care_plan,logs);assert.equal(a.level,"RED");assert.equal(a.who_should_act,"emergency");
+  globalThis.fetch=async()=>new Response(JSON.stringify({content:[{type:"text",text:JSON.stringify({level:"GREEN",rationale:["Drink more water; oxygen saturation is 87%."],confidence:"high"})}]}));
+  a=await assess(p.care_plan,logs);
+  assert.equal(a.level,"RED");assert.equal(a.who_should_act,"emergency");assert.equal(a.ai_mode,"live");
+  assert.ok(!JSON.stringify(a).includes("Drink more water"));
+ }finally{globalThis.fetch=original;delete process.env.ANTHROPIC_API_KEY;}
+});
+test("live assessment is atomic while polling and accepts fenced JSON",async()=>{
+ const s=new AgewellStore(),original=globalThis.fetch;
+ process.env.ANTHROPIC_API_KEY="synthetic-test-key";
+ let release!:()=>void,requested!:()=>void;
+ const requestStarted=new Promise<void>(resolve=>{requested=resolve;});
+ const released=new Promise<void>(resolve=>{release=resolve;});
+ try{
+  globalThis.fetch=async()=>{
+   requested();
+   await released;
+    const p=s.get("margaret"),fallback=assessCached(p.care_plan,p.logs.slice(0,2));
+    const output={level:fallback.level,rationale:fallback.rationale,confidence:fallback.confidence};
+   return new Response(JSON.stringify({content:[{type:"text",text:`\`\`\`json\n${JSON.stringify(output)}\n\`\`\``}]}));
+  };
+  const advancing=s.demo("advance","margaret");
+  await requestStarted;
+  assert.equal(s.detail("margaret").day,1);
+  assert.doesNotThrow(()=>GetAgewellStateResponse.parse(s.state()));
+  release();
+  await advancing;
+  assert.equal(s.detail("margaret").day,2);
+  assert.equal(s.detail("margaret").current_assessment.ai_mode,"live");
+ }finally{globalThis.fetch=original;delete process.env.ANTHROPIC_API_KEY;}
+});
+test("log mutation and assessment commit atomically while live AI is pending",async()=>{
+ const s=new AgewellStore(),original=globalThis.fetch;
+ process.env.ANTHROPIC_API_KEY="synthetic-test-key";
+ let release!:()=>void,requested!:()=>void;
+ const requestStarted=new Promise<void>(resolve=>{requested=resolve;});
+ const released=new Promise<void>(resolve=>{release=resolve;});
+ try{
+  globalThis.fetch=async()=>{
+   requested();
+   await released;
+   return new Response(JSON.stringify({content:[{type:"text",text:JSON.stringify({level:"RED",rationale:["Systolic blood pressure is 185."],confidence:"high"})}]}));
+  };
+  const logging=s.log("margaret",{bp_systolic:185});
+  await requestStarted;
+  assert.notEqual(s.detail("margaret").logs[0].bp_systolic,185);
+  assert.doesNotThrow(()=>GetAgewellPatientResponse.parse(s.detail("margaret")));
+  release();
+  const detail=await logging;
+  assert.equal(detail.logs[0].bp_systolic,185);
+  assert.equal(detail.current_assessment.level,"RED");
+  assert.equal(detail.current_assessment.ai_mode,"live");
  }finally{globalThis.fetch=original;delete process.env.ANTHROPIC_API_KEY;}
 });
 test("AI retries only when the preferred model id is rejected",async()=>{
