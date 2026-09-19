@@ -8,6 +8,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { QueryError } from '@/components/ui/query-error';
+import { useAccessibility } from '@/lib/accessibility';
+import { AccessibilityBar } from '@/components/AccessibilityBar';
 
 type ElderView = 'home' | 'recovery' | 'meds' | 'readings' | 'feelings';
 
@@ -16,6 +18,7 @@ export default function ElderApp() {
   const id = state?.selected_patient_id || 'margaret';
   const { data: patient, isLoading, isError, error, refetch } = useGetAgewellPatient(id);
   const { toast } = useToast();
+  const { zoom } = useAccessibility();
   const queryClient = useQueryClient();
   
   const updateLog = useUpdateAgewellLog({
@@ -123,8 +126,31 @@ export default function ElderApp() {
   const totalMeds = care_plan.medications.length;
   const takenMeds = care_plan.medications.filter(med => currentLog?.meds_taken.some(m => m.med_name === med.name && m.taken)).length;
 
+  const firstName = care_plan.patient.name.split(' ')[0];
+  const statusPhrase =
+    current_assessment.level === 'GREEN' ? 'You are on track today.' :
+    current_assessment.level === 'YELLOW' ? "We're keeping an eye on something." :
+    current_assessment.level === 'ORANGE' ? 'Your care team has been notified.' :
+    'Please contact help now.';
+
+  // Text narrated when the elder taps "Read aloud" — plain, no clinical numbers.
+  const readText =
+    activeView === 'home'
+      ? `Good morning, ${firstName}. Today is day ${day} of 7. ${statusPhrase} You have taken ${takenMeds} of ${totalMeds} medications today.`
+      : activeView === 'recovery'
+      ? `${statusPhrase} ${patient.summary.patient_summary}`
+      : activeView === 'meds'
+      ? `Today's medications. You have taken ${takenMeds} of ${totalMeds} so far. Tap Mark Taken after you take each one.`
+      : activeView === 'readings'
+      ? 'Today\'s readings. Please enter your numbers in the boxes.'
+      : 'How are you feeling today? Tap any symptoms you have, or tap No problems today.';
+
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 pb-24 text-[20px] font-sans">
+    <div
+      style={{ zoom }}
+      className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 pb-24 text-[20px] font-sans"
+    >
+      <AccessibilityBar readText={readText} />
       <div className="bg-white dark:bg-slate-900 px-6 py-6 border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-10 flex items-center justify-between">
         <div>
           {activeView !== 'home' && (
