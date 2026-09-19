@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "AgeWell"
+description = "Synthetic seven-day post-discharge monitoring with patient-specific risk assessment, elder and family views, and closed-loop clinician case tracking."
+version = "1.0.0"
+id = "artifacts/agewell"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25960
+
+[services.development]
+run = "pnpm --filter @workspace/agewell run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/agewell", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/agewell/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25960"
+BASE_PATH = "/"

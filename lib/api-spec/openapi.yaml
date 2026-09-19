@@ -1,0 +1,1867 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Api",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api"
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "operationId": "healthCheck",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agewell/state": {
+      "get": {
+        "operationId": "getAgewellState",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dashboard"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agewell/patients/{id}": {
+      "get": {
+        "operationId": "getAgewellPatient",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/agewell/demo": {
+      "post": {
+        "operationId": "runAgewellDemo",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dashboard"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agewell/patients/{id}/log": {
+      "post": {
+        "operationId": "updateAgewellLog",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogInput"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/agewell/cases/{id}/transition": {
+      "post": {
+        "operationId": "transitionAgewellCase",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionInput"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/agewell/intake/sample": {
+      "get": {
+        "operationId": "getAgewellIntakeSample",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntakeSample"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agewell/intake/extract": {
+      "post": {
+        "operationId": "extractAgewellIntake",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntakeResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IntakeInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agewell/intake/confirm": {
+      "post": {
+        "operationId": "confirmAgewellIntake",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IntakeConfirmInput"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HealthStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Level": {
+        "type": "string",
+        "enum": [
+          "GREEN",
+          "YELLOW",
+          "ORANGE",
+          "RED"
+        ]
+      },
+      "Actor": {
+        "type": "string",
+        "enum": [
+          "patient",
+          "caregiver",
+          "pharmacist",
+          "nurse",
+          "physician",
+          "emergency"
+        ]
+      },
+      "CaseState": {
+        "type": "string",
+        "enum": [
+          "DETECTED",
+          "NOTIFIED",
+          "ACKNOWLEDGED",
+          "ACTED",
+          "RESOLVED"
+        ]
+      },
+      "Medication": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "dose": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "frequency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "time_of_day": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "changed_at_discharge": {
+            "type": "boolean"
+          },
+          "previous_dose": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "dose",
+          "frequency",
+          "time_of_day",
+          "changed_at_discharge",
+          "previous_dose"
+        ]
+      },
+      "Vitals": {
+        "type": "object",
+        "properties": {
+          "bp_systolic": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "bp_diastolic": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "heart_rate": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "weight_lb": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "spo2": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "temp_f": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "glucose": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "bp_systolic",
+          "bp_diastolic",
+          "heart_rate",
+          "weight_lb",
+          "spo2",
+          "temp_f",
+          "glucose"
+        ]
+      },
+      "CarePlan": {
+        "type": "object",
+        "properties": {
+          "patient": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "lives_alone": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "age",
+              "lives_alone"
+            ]
+          },
+          "caregiver": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "relation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "phone": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "distance_miles": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "relation",
+              "phone",
+              "distance_miles"
+            ]
+          },
+          "admission_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "discharge_diagnoses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "chronic_conditions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "primary_condition": {
+            "type": "string",
+            "enum": [
+              "CHF",
+              "DIABETES",
+              "COPD",
+              "POST_OP",
+              "HYPERTENSION"
+            ]
+          },
+          "medications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Medication"
+            }
+          },
+          "discharge_baseline": {
+            "$ref": "#/components/schemas/Vitals"
+          },
+          "monitoring_instructions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "what": {
+                  "type": "string"
+                },
+                "frequency": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "threshold_text": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "what",
+                "frequency",
+                "threshold_text"
+              ]
+            }
+          },
+          "red_flag_symptoms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "follow_up": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "provider": {
+                  "type": "string"
+                },
+                "specialty": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "due_date": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "provider",
+                "specialty",
+                "due_date"
+              ]
+            }
+          },
+          "diet_activity_restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "patient",
+          "caregiver",
+          "admission_reason",
+          "discharge_diagnoses",
+          "chronic_conditions",
+          "primary_condition",
+          "medications",
+          "discharge_baseline",
+          "monitoring_instructions",
+          "red_flag_symptoms",
+          "follow_up",
+          "diet_activity_restrictions"
+        ]
+      },
+      "MedTaken": {
+        "type": "object",
+        "properties": {
+          "med_name": {
+            "type": "string"
+          },
+          "taken": {
+            "type": "boolean"
+          },
+          "time": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "med_name",
+          "taken",
+          "time"
+        ]
+      },
+      "Verification": {
+        "type": "object",
+        "properties": {
+          "checked": {
+            "type": "boolean"
+          },
+          "med_name": {
+            "type": "string"
+          },
+          "label_dose": {
+            "type": "string"
+          },
+          "expected_dose": {
+            "type": "string"
+          },
+          "mismatch": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "checked",
+          "label_dose",
+          "expected_dose",
+          "mismatch"
+        ]
+      },
+      "DayLog": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string"
+          },
+          "bp_systolic": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "bp_diastolic": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "heart_rate": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "weight_lb": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "spo2": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "temp_f": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "glucose": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "sleep_hours": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "activity_steps": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "pain_score": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "meds_taken": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MedTaken"
+            }
+          },
+          "med_verification": {
+            "$ref": "#/components/schemas/Verification"
+          },
+          "symptoms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "free_text_note": {
+            "type": "string"
+          },
+          "meal_note": {
+            "type": "string"
+          },
+          "wound_check": {
+            "type": "string"
+          },
+          "mobility_note": {
+            "type": "string"
+          },
+          "activity_tolerance": {
+            "type": "string"
+          },
+          "bp_evening_systolic": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "bp_evening_diastolic": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "day",
+          "date",
+          "bp_systolic",
+          "bp_diastolic",
+          "heart_rate",
+          "weight_lb",
+          "spo2",
+          "temp_f",
+          "glucose",
+          "sleep_hours",
+          "activity_steps",
+          "pain_score",
+          "meds_taken",
+          "med_verification",
+          "symptoms",
+          "free_text_note"
+        ]
+      },
+      "Assessment": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "integer"
+          },
+          "level": {
+            "$ref": "#/components/schemas/Level"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "deviation_from_plan": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "who_should_act": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "recommended_action": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "triggered_hard_rules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ai_mode": {
+            "type": "string",
+            "enum": [
+              "live",
+              "cached"
+            ]
+          }
+        },
+        "required": [
+          "day",
+          "level",
+          "headline",
+          "rationale",
+          "deviation_from_plan",
+          "who_should_act",
+          "recommended_action",
+          "confidence",
+          "triggered_hard_rules",
+          "ai_mode"
+        ]
+      },
+      "CaseEvent": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/CaseState"
+          },
+          "actor": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "timestamp",
+          "state",
+          "actor",
+          "note"
+        ]
+      },
+      "ResolutionCheck": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "ACTED_UNRESOLVED",
+              "RESOLVED"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "next_check_hours": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "status",
+          "reason",
+          "next_check_hours"
+        ]
+      },
+      "CareCase": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "patient_id": {
+            "type": "string"
+          },
+          "day": {
+            "type": "integer"
+          },
+          "level": {
+            "$ref": "#/components/schemas/Level"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "who_should_act": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "state": {
+            "$ref": "#/components/schemas/CaseState"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseEvent"
+            }
+          },
+          "resolution_check": {
+            "$ref": "#/components/schemas/ResolutionCheck"
+          }
+        },
+        "required": [
+          "id",
+          "patient_id",
+          "day",
+          "level",
+          "headline",
+          "who_should_act",
+          "state",
+          "events",
+          "resolution_check"
+        ]
+      },
+      "Protocol": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "vitals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "symptoms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "label",
+          "vitals",
+          "symptoms"
+        ]
+      },
+      "Summary": {
+        "type": "object",
+        "properties": {
+          "patient_summary": {
+            "type": "string"
+          },
+          "clinical_summary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "patient_summary",
+          "clinical_summary"
+        ]
+      },
+      "Report": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          },
+          "days_monitored": {
+            "type": "integer"
+          },
+          "medication_adherence_pct": {
+            "type": "number"
+          },
+          "events": {
+            "type": "object",
+            "properties": {
+              "YELLOW": {
+                "type": "integer"
+              },
+              "ORANGE": {
+                "type": "integer"
+              },
+              "RED": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "YELLOW",
+              "ORANGE",
+              "RED"
+            ]
+          },
+          "human_interventions": {
+            "type": "integer"
+          },
+          "vital_trends": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "vital": {
+                  "type": "string"
+                },
+                "direction": {
+                  "type": "string"
+                },
+                "baseline": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "latest": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "vital",
+                "direction",
+                "baseline",
+                "latest"
+              ]
+            }
+          },
+          "symptom_log": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "integer"
+                },
+                "symptoms": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "day",
+                "symptoms"
+              ]
+            }
+          },
+          "cases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CareCase"
+            }
+          },
+          "follow_up": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "provider": {
+                  "type": "string"
+                },
+                "specialty": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "due_date": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "provider",
+                "specialty",
+                "due_date",
+                "status"
+              ]
+            }
+          },
+          "trajectory": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "available",
+          "days_monitored",
+          "medication_adherence_pct",
+          "events",
+          "human_interventions",
+          "vital_trends",
+          "symptom_log",
+          "cases",
+          "follow_up",
+          "trajectory"
+        ]
+      },
+      "PatientRow": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "primary_condition": {
+            "type": "string"
+          },
+          "diagnosis": {
+            "type": "string"
+          },
+          "day": {
+            "type": "integer"
+          },
+          "level": {
+            "$ref": "#/components/schemas/Level"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "who_should_act": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "ai_mode": {
+            "type": "string",
+            "enum": [
+              "live",
+              "cached"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age",
+          "primary_condition",
+          "diagnosis",
+          "day",
+          "level",
+          "headline",
+          "who_should_act",
+          "ai_mode"
+        ]
+      },
+      "PatientDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "day": {
+            "type": "integer"
+          },
+          "care_plan": {
+            "$ref": "#/components/schemas/CarePlan"
+          },
+          "protocol": {
+            "$ref": "#/components/schemas/Protocol"
+          },
+          "logs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DayLog"
+            }
+          },
+          "assessments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assessment"
+            }
+          },
+          "current_assessment": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "cases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CareCase"
+            }
+          },
+          "summary": {
+            "$ref": "#/components/schemas/Summary"
+          },
+          "report": {
+            "$ref": "#/components/schemas/Report"
+          },
+          "discharge_summary_raw": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "day",
+          "care_plan",
+          "protocol",
+          "logs",
+          "assessments",
+          "current_assessment",
+          "cases",
+          "summary",
+          "report",
+          "discharge_summary_raw"
+        ]
+      },
+      "Dashboard": {
+        "type": "object",
+        "properties": {
+          "synthetic": {
+            "type": "boolean"
+          },
+          "selected_patient_id": {
+            "type": "string"
+          },
+          "ai_mode": {
+            "type": "string",
+            "enum": [
+              "live",
+              "cached"
+            ]
+          },
+          "counts": {
+            "type": "object",
+            "properties": {
+              "GREEN": {
+                "type": "integer"
+              },
+              "YELLOW": {
+                "type": "integer"
+              },
+              "ORANGE": {
+                "type": "integer"
+              },
+              "RED": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "GREEN",
+              "YELLOW",
+              "ORANGE",
+              "RED"
+            ]
+          },
+          "patients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PatientRow"
+            }
+          }
+        },
+        "required": [
+          "synthetic",
+          "selected_patient_id",
+          "ai_mode",
+          "counts",
+          "patients"
+        ]
+      },
+      "DemoInput": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "load",
+              "advance",
+              "jump",
+              "select",
+              "reset"
+            ]
+          },
+          "patient_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      },
+      "LogInput": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "object",
+            "properties": {
+              "bp_systolic": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "bp_diastolic": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "heart_rate": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "weight_lb": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "spo2": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "temp_f": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "glucose": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "pain_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "sleep_hours": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "activity_steps": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "meds_taken": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MedTaken"
+                }
+              },
+              "med_verification": {
+                "$ref": "#/components/schemas/Verification"
+              },
+              "symptoms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "free_text_note": {
+                "type": "string"
+              },
+              "meal_note": {
+                "type": "string"
+              },
+              "wound_check": {
+                "type": "string"
+              },
+              "mobility_note": {
+                "type": "string"
+              },
+              "activity_tolerance": {
+                "type": "string"
+              },
+              "bp_evening_systolic": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "bp_evening_diastolic": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "required": [
+          "fields"
+        ]
+      },
+      "TransitionInput": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "$ref": "#/components/schemas/CaseState"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_state": {
+            "$ref": "#/components/schemas/CaseState"
+          },
+          "clinician_expected": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "state",
+          "actor",
+          "note"
+        ]
+      },
+      "IntakeInput": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "file_base64": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "IntakeResult": {
+        "type": "object",
+        "properties": {
+          "care_plan": {
+            "$ref": "#/components/schemas/CarePlan"
+          },
+          "ai_mode": {
+            "type": "string",
+            "enum": [
+              "live",
+              "cached"
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "care_plan",
+          "ai_mode",
+          "warnings"
+        ]
+      },
+      "IntakeConfirmInput": {
+        "type": "object",
+        "properties": {
+          "care_plan": {
+            "$ref": "#/components/schemas/CarePlan"
+          }
+        },
+        "required": [
+          "care_plan"
+        ]
+      },
+      "IntakeSample": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    }
+  }
+}
