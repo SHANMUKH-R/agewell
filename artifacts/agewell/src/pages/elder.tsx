@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useGetAgewellState, useGetAgewellPatient, useUpdateAgewellLog, getGetAgewellPatientQueryKey } from '@workspace/api-client-react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { getLevelColor } from '@/lib/utils';
-import { Check, PhoneCall, Pill, Activity, SmilePlus, ArrowLeft, Utensils, ActivitySquare, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { Check, PhoneCall, Pill, Activity, SmilePlus, ArrowLeft, Utensils, ActivitySquare, ShieldAlert, CheckCircle2, Mic, MicOff } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { QueryError } from '@/components/ui/query-error';
 import { useAccessibility } from '@/lib/accessibility';
 import { AccessibilityBar } from '@/components/AccessibilityBar';
+import { OverallHealth, VitalsGrid } from '@/components/HealthVisuals';
 
 type ElderView = 'home' | 'recovery' | 'meds' | 'readings' | 'feelings';
 
@@ -66,6 +67,24 @@ export default function ElderApp() {
   const [activeView, setActiveView] = useState<ElderView>('home');
   const [checkingMed, setCheckingMed] = useState<string | null>(null);
   const [bottleText, setBottleText] = useState('');
+  const [voiceStatus, setVoiceStatus] = useState<'idle' | 'listening' | 'unsupported' | 'error'>('idle');
+  const recognitionRef = useRef<any>(null);
+  const stopVoiceRecognition = useCallback(() => {
+    const recognition = recognitionRef.current;
+    recognitionRef.current = null;
+    if (!recognition) return;
+    recognition.onstart = null;
+    recognition.onresult = null;
+    recognition.onerror = null;
+    recognition.onend = null;
+    try {
+      recognition.abort?.();
+    } catch {
+      // The browser may throw if recognition already ended.
+    }
+  }, []);
+
+  useEffect(() => stopVoiceRecognition, [stopVoiceRecognition]);
 
   if (isError) return <QueryError error={error} refetch={refetch} />;
 
@@ -139,12 +158,52 @@ export default function ElderApp() {
     updateLog.mutate({ id, data: { fields: { symptoms: newSymptoms } } });
   };
 
+  const startVoiceLogging = () => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setVoiceStatus('unsupported');
+      return;
+    }
+    stopVoiceRecognition();
+    let recognition: any;
+    try {
+      recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognitionRef.current = recognition;
+      const finish = (status: 'idle' | 'error') => {
+        if (recognitionRef.current !== recognition) return;
+        recognitionRef.current = null;
+        recognition.onstart = null;
+        recognition.onresult = null;
+        recognition.onerror = null;
+        recognition.onend = null;
+        setVoiceStatus(status);
+      };
+      recognition.onstart = () => setVoiceStatus('listening');
+      recognition.onerror = () => finish('error');
+      recognition.onend = () => finish('idle');
+      recognition.onresult = (event: any) => {
+        const spoken = String(event.results?.[0]?.[0]?.transcript || '').toLowerCase();
+        const match = SYMPTOM_OPTIONS.find((symptom) =>
+          spoken.includes(symptom.id) || spoken.includes(symptom.label.toLowerCase()),
+        );
+        finish(match ? 'idle' : 'error');
+        if (match) handleToggleSymptom(match.id);
+      };
+      recognition.start();
+    } catch {
+      stopVoiceRecognition();
+      setVoiceStatus('error');
+    }
+  };
+
   const SYMPTOM_OPTIONS = [
-    { id: 'fatigue', label: 'Tired' },
-    { id: 'dizziness on standing', label: 'Dizzy' },
-    { id: 'short of breath climbing stairs', label: 'Short of breath' },
-    { id: 'ankle swelling', label: 'Swelling in ankles' },
-    { id: 'chest pain', label: 'Chest pain' },
+    { id: 'fatigue', label: 'Tired', emoji: '😴' },
+    { id: 'dizziness on standing', label: 'Dizzy', emoji: '😵‍💫' },
+    { id: 'short of breath climbing stairs', label: 'Short of breath', emoji: '😮‍💨' },
+    { id: 'ankle swelling', label: 'Swelling in ankles', emoji: '🦶' },
+    { id: 'chest pain', label: 'Chest pain', emoji: '💢' },
   ];
 
   // Using 'any' type cast for transient new fields until types are generated
@@ -201,13 +260,13 @@ export default function ElderApp() {
   // Text narrated when the elder taps "Read aloud" — plain, no clinical numbers.
   const readText =
     activeView === 'home'
-      ? `Good morning, ${firstName}. Today is day ${day} of 7. ${statusPhrase} You have taken ${takenMeds} of ${totalMeds} medications today.`
+       ? `Good morning, ${firstName}. Today is day ${day} of 7. ${statusPhrase} You have taken ${takenMeds} of ${totalMeds} medications today. ${followUpAppointments.length > 0 ? `Your next appointment is ${followUpAppointments[nextAppointmentIndex].provider} on ${formatAppointmentDate(followUpAppointments[nextAppointmentIndex].due_date || '')}.` : ''} ${current_assessment.level !== 'GREEN' ? `Your care team is on it. ${careTeamName}.` : ''}`
       : activeView === 'recovery'
       ? `${statusPhrase} ${patient.summary.patient_summary}`
       : activeView === 'meds'
       ? `Today's medications. You have taken ${takenMeds} of ${totalMeds} so far. Tap Mark Taken after you take each one.`
       : activeView === 'readings'
-      ? 'Today\'s readings. Please enter your numbers in the boxes.'
+       ? 'Today\'s readings arrive automatically from your connected devices. Manual entry is available as a fallback when no device is connected.'
       : 'How are you feeling today? Tap any symptoms you have, or tap No problems today.';
 
   return (
@@ -255,15 +314,6 @@ export default function ElderApp() {
                     <p className="mt-2 text-[20px] font-medium text-slate-700 dark:text-slate-300">
                       AgeWell noticed something and told your care team.
                     </p>
-                    {current_assessment.level === 'RED' && (
-                      <a
-                        href="tel:911"
-                        className="mt-4 inline-flex min-h-[60px] items-center rounded-2xl bg-red-600 px-5 py-3 text-[22px] font-bold text-white shadow-sm hover:bg-red-700"
-                      >
-                        <PhoneCall className="mr-3 h-6 w-6" />
-                        Call 911 Now
-                      </a>
-                    )}
                   </div>
                 </div>
               </div>
@@ -290,6 +340,8 @@ export default function ElderApp() {
               <span className="text-[20px] font-medium text-slate-700 dark:text-slate-300">Tap to view your daily summary</span>
             </button>
 
+            <OverallHealth logs={logs} assessments={patient.assessments} currentDay={day} compact />
+
             <button 
               onClick={() => setActiveView('meds')}
               className="w-full p-8 rounded-3xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-left transition-colors flex items-center justify-between shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800"
@@ -315,7 +367,7 @@ export default function ElderApp() {
               </div>
               <div>
                 <div className="text-[26px] font-bold text-slate-900 dark:text-slate-100">Readings</div>
-                <div className="text-[20px] text-slate-500 dark:text-slate-400 font-medium">Log your daily vitals</div>
+                 <div className="text-[20px] text-slate-500 dark:text-slate-400 font-medium">View your daily vitals</div>
               </div>
             </button>
 
@@ -410,12 +462,6 @@ export default function ElderApp() {
                 {patient.summary.patient_summary}
               </p>
               
-              {current_assessment.level === 'RED' && (
-                <a href="tel:911" className="mt-8 flex items-center justify-center gap-4 w-full bg-red-600 hover:bg-red-700 text-white py-6 rounded-2xl text-[28px] font-bold transition-colors shadow-md">
-                  <PhoneCall className="w-8 h-8" />
-                  Call 911 Now
-                </a>
-              )}
             </div>
             
             <Button onClick={() => setActiveView('home')} size="elder" className="w-full text-[24px] bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 h-[80px]">
@@ -436,6 +482,9 @@ export default function ElderApp() {
                     <div>
                       <div className="text-[28px] font-bold text-slate-900 dark:text-slate-100 leading-tight mb-1">{med.name}</div>
                       <div className="text-[24px] text-slate-600 dark:text-slate-400 font-medium">{med.dose} • {med.time_of_day || med.frequency}</div>
+                      <div className="mt-1 text-base text-slate-500 dark:text-slate-400">
+                        Expires {med.expires_at ? new Date(med.expires_at).toLocaleDateString() : 'not recorded'}
+                      </div>
                     </div>
                   </div>
                   
@@ -488,7 +537,19 @@ export default function ElderApp() {
 
         {activeView === 'readings' && (
           <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-            
+            <div className="rounded-3xl border-2 border-sky-200 bg-sky-50 p-6 shadow-sm dark:border-sky-900 dark:bg-sky-950/20">
+              <h2 className="text-[26px] font-bold">Automatic daily readings</h2>
+              <p className="mt-2 text-[20px] text-slate-700 dark:text-slate-300">
+                Readings come from simulated connected devices. Missing measurements stay as no record.
+              </p>
+              <p className="mt-3 text-base font-semibold text-sky-800 dark:text-sky-300">
+                Source: {currentLog?.source || 'No device record'} · Last synced: {currentLog?.last_synced_at ? new Date(currentLog.last_synced_at).toLocaleString() : 'Not synced'}
+              </p>
+            </div>
+            <VitalsGrid logs={logs} carePlan={care_plan} protocol={protocol} />
+            <details className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+              <summary className="cursor-pointer text-xl font-bold text-slate-600 dark:text-slate-300">Manual fallback (when no device is connected)</summary>
+              <div className="mt-6 space-y-6">
             {protocol.vitals.includes('weight_lb') && (
               <div className="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm">
                 <Label className="text-[26px] font-bold mb-4 block">Weight (lbs)</Label>
@@ -716,6 +777,8 @@ export default function ElderApp() {
                 />
               </div>
             )}
+              </div>
+            </details>
             
             <Button onClick={() => setActiveView('home')} size="elder" className="w-full text-[24px] bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 h-[80px] mt-8">
               Done with Readings
@@ -725,6 +788,19 @@ export default function ElderApp() {
 
         {activeView === 'feelings' && (
           <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="rounded-3xl border-2 border-sky-200 bg-sky-50 p-5 dark:border-sky-900 dark:bg-sky-950/20">
+              <button
+                type="button"
+                onClick={startVoiceLogging}
+                disabled={voiceStatus === 'listening'}
+                className="flex min-h-[60px] w-full items-center justify-center gap-3 rounded-2xl bg-sky-700 px-5 py-3 text-xl font-bold text-white hover:bg-sky-800 disabled:opacity-70"
+              >
+                {voiceStatus === 'listening' ? <MicOff className="h-6 w-6" /> : <Mic className="h-6 w-6" />}
+                {voiceStatus === 'listening' ? 'Listening… say a symptom' : 'Say a symptom'}
+              </button>
+              {voiceStatus === 'unsupported' && <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Voice logging is not supported in this browser. You can still tap a symptom.</p>}
+              {voiceStatus === 'error' && <p className="mt-2 text-sm text-amber-700 dark:text-amber-300">I could not match that. Try saying “tired,” “dizzy,” or another button below.</p>}
+            </div>
             <div className="grid grid-cols-1 gap-4">
               {SYMPTOM_OPTIONS.map(s => {
                 const isSelected = reportedSymptoms.includes(s.id);
@@ -744,7 +820,7 @@ export default function ElderApp() {
                     }`}>
                       {isSelected && <Check className="w-6 h-6" />}
                     </div>
-                    <span className="text-[26px] font-bold leading-tight">{s.label}</span>
+                    <span className="text-[26px] font-bold leading-tight">{s.emoji} {s.label}</span>
                   </button>
                 );
               })}
@@ -774,6 +850,13 @@ export default function ElderApp() {
         )}
 
       </div>
+      {current_assessment.level === 'RED' && (
+        <div className="fixed bottom-0 left-0 right-0 z-[60] border-t-2 border-red-200 bg-white/95 p-3 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur dark:border-red-900 dark:bg-slate-950/95">
+          <a href="tel:911" className="mx-auto flex min-h-[52px] max-w-2xl items-center justify-center gap-3 rounded-xl bg-red-600 px-4 py-2 text-xl font-bold text-white hover:bg-red-700">
+            <PhoneCall className="h-6 w-6" /> Call 911
+          </a>
+        </div>
+      )}
     </div>
   );
 }

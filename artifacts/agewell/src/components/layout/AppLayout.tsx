@@ -26,12 +26,14 @@ export function AppLayout({ children }: { children: ReactNode }) {
       switch (e.key) {
         case '1': setLocation('/elder'); break;
         case '2': setLocation('/family'); break;
-        case '3': setLocation('/'); break;
+        case '3': setLocation('/clinician'); break;
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [setLocation]);
+
+  const isLanding = location === '/' || location === '/welcome';
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-slate-50 dark:bg-slate-950 font-sans transition-colors">
@@ -50,7 +52,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
           <nav className="flex items-center overflow-x-auto w-full md:w-auto justify-start sm:justify-center gap-4 sm:gap-6 text-sm font-medium print:hidden pb-1 md:pb-0 scrollbar-hide">
             <Link href="/elder" className={`transition-colors whitespace-nowrap py-1 sm:py-2 border-b-2 ${location === '/elder' ? 'border-primary text-primary' : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-primary'}`}>[ Elder ]</Link>
             <Link href="/family" className={`transition-colors whitespace-nowrap py-1 sm:py-2 border-b-2 ${location === '/family' ? 'border-primary text-primary' : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-primary'}`}>[ Family ]</Link>
-            <Link href="/" className={`transition-colors whitespace-nowrap py-1 sm:py-2 border-b-2 ${location === '/' || location.startsWith('/patients/') ? 'border-primary text-primary' : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-primary'}`}>[ Clinician ]</Link>
+            <Link href="/clinician" className={`transition-colors whitespace-nowrap py-1 sm:py-2 border-b-2 ${location === '/clinician' || location.startsWith('/patients/') ? 'border-primary text-primary' : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-primary'}`}>[ Clinician ]</Link>
           </nav>
 
           <div className="flex items-center justify-between w-full md:w-auto gap-4">
@@ -66,9 +68,11 @@ export function AppLayout({ children }: { children: ReactNode }) {
         {children}
       </main>
       
-      <div className="print:hidden">
-        <DemoControls />
-      </div>
+      {!isLanding && (
+        <div className="print:hidden">
+          <DemoControls />
+        </div>
+      )}
     </div>
   )
 }

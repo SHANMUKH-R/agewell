@@ -126,9 +126,9 @@ export class AgewellStore {
   }
   return this.detail(p.care_plan.patient.id);
  }
- confirm(plan:CarePlan){
+  confirm(plan:CarePlan){
   const id=`intake-${randomUUID().slice(0,8)}`;const care_plan=structuredClone(plan);care_plan.patient.id=id;
-  const logs:DayLog[]=Array.from({length:7},(_,i)=>({day:i+1,date:new Date(Date.now()+i*86400000).toISOString().slice(0,10),bp_systolic:null,bp_diastolic:null,heart_rate:null,weight_lb:null,spo2:null,temp_f:null,glucose:null,pain_score:null,sleep_hours:null,activity_steps:null,meds_taken:care_plan.medications.map(m=>({med_name:m.name,taken:false,time:null})),med_verification:{checked:false,label_dose:"",expected_dose:"",mismatch:false},symptoms:[],free_text_note:"No home readings recorded yet."}));
+   const logs:DayLog[]=Array.from({length:7},(_,i)=>({day:i+1,date:new Date(Date.now()+i*86400000).toISOString().slice(0,10),bp_systolic:null,bp_diastolic:null,heart_rate:null,weight_lb:null,spo2:null,temp_f:null,glucose:null,pain_score:null,sleep_hours:null,activity_steps:null,meds_taken:care_plan.medications.map(m=>({med_name:m.name,taken:false,time:null})),med_verification:{checked:false,label_dose:"",expected_dose:"",mismatch:false},symptoms:[],free_text_note:"No home readings recorded yet.",source:null,observed_at:null,last_synced_at:null}));
   // No observed dose is not the same as a missed dose: begin with no reports.
   logs.forEach(l=>l.meds_taken=[]);
   const p:Stored={care_plan,day:1,logs,assessments:[],cases:[],discharge_summary_raw:"Confirmed intake care plan."};this.patients.set(id,p);this.selected=id;this.record(p,assessCached(care_plan,logs.slice(0,1)));return this.detail(id);

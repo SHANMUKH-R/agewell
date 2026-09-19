@@ -67,7 +67,8 @@ export const GetAgewellPatientResponse = zod.object({
   "frequency": zod.string().nullable(),
   "time_of_day": zod.string().nullable(),
   "changed_at_discharge": zod.boolean(),
-  "previous_dose": zod.string().nullable()
+  "previous_dose": zod.string().nullable(),
+  "expires_at": zod.coerce.date().nullable()
 })),
   "discharge_baseline": zod.object({
   "bp_systolic": zod.number().nullable(),
@@ -129,7 +130,10 @@ export const GetAgewellPatientResponse = zod.object({
   "mobility_note": zod.string().optional(),
   "activity_tolerance": zod.string().optional(),
   "bp_evening_systolic": zod.number().nullish(),
-  "bp_evening_diastolic": zod.number().nullish()
+  "bp_evening_diastolic": zod.number().nullish(),
+  "source": zod.string().nullish(),
+  "observed_at": zod.coerce.date().nullish(),
+  "last_synced_at": zod.coerce.date().nullish()
 })),
   "assessments": zod.array(zod.object({
   "day": zod.number().int(),
@@ -326,7 +330,8 @@ export const UpdateAgewellLogResponse = zod.object({
   "frequency": zod.string().nullable(),
   "time_of_day": zod.string().nullable(),
   "changed_at_discharge": zod.boolean(),
-  "previous_dose": zod.string().nullable()
+  "previous_dose": zod.string().nullable(),
+  "expires_at": zod.coerce.date().nullable()
 })),
   "discharge_baseline": zod.object({
   "bp_systolic": zod.number().nullable(),
@@ -388,7 +393,10 @@ export const UpdateAgewellLogResponse = zod.object({
   "mobility_note": zod.string().optional(),
   "activity_tolerance": zod.string().optional(),
   "bp_evening_systolic": zod.number().nullish(),
-  "bp_evening_diastolic": zod.number().nullish()
+  "bp_evening_diastolic": zod.number().nullish(),
+  "source": zod.string().nullish(),
+  "observed_at": zod.coerce.date().nullish(),
+  "last_synced_at": zod.coerce.date().nullish()
 })),
   "assessments": zod.array(zod.object({
   "day": zod.number().int(),
@@ -531,7 +539,8 @@ export const TransitionAgewellCaseResponse = zod.object({
   "frequency": zod.string().nullable(),
   "time_of_day": zod.string().nullable(),
   "changed_at_discharge": zod.boolean(),
-  "previous_dose": zod.string().nullable()
+  "previous_dose": zod.string().nullable(),
+  "expires_at": zod.coerce.date().nullable()
 })),
   "discharge_baseline": zod.object({
   "bp_systolic": zod.number().nullable(),
@@ -593,7 +602,10 @@ export const TransitionAgewellCaseResponse = zod.object({
   "mobility_note": zod.string().optional(),
   "activity_tolerance": zod.string().optional(),
   "bp_evening_systolic": zod.number().nullish(),
-  "bp_evening_diastolic": zod.number().nullish()
+  "bp_evening_diastolic": zod.number().nullish(),
+  "source": zod.string().nullish(),
+  "observed_at": zod.coerce.date().nullish(),
+  "last_synced_at": zod.coerce.date().nullish()
 })),
   "assessments": zod.array(zod.object({
   "day": zod.number().int(),
@@ -730,7 +742,8 @@ export const ExtractAgewellIntakeResponse = zod.object({
   "frequency": zod.string().nullable(),
   "time_of_day": zod.string().nullable(),
   "changed_at_discharge": zod.boolean(),
-  "previous_dose": zod.string().nullable()
+  "previous_dose": zod.string().nullable(),
+  "expires_at": zod.coerce.date().nullable()
 })),
   "discharge_baseline": zod.object({
   "bp_systolic": zod.number().nullable(),
@@ -783,7 +796,8 @@ export const ConfirmAgewellIntakeBody = zod.object({
   "frequency": zod.string().nullable(),
   "time_of_day": zod.string().nullable(),
   "changed_at_discharge": zod.boolean(),
-  "previous_dose": zod.string().nullable()
+  "previous_dose": zod.string().nullable(),
+  "expires_at": zod.coerce.date().nullable()
 })),
   "discharge_baseline": zod.object({
   "bp_systolic": zod.number().nullable(),
@@ -835,7 +849,8 @@ export const ConfirmAgewellIntakeResponse = zod.object({
   "frequency": zod.string().nullable(),
   "time_of_day": zod.string().nullable(),
   "changed_at_discharge": zod.boolean(),
-  "previous_dose": zod.string().nullable()
+  "previous_dose": zod.string().nullable(),
+  "expires_at": zod.coerce.date().nullable()
 })),
   "discharge_baseline": zod.object({
   "bp_systolic": zod.number().nullable(),
@@ -897,7 +912,10 @@ export const ConfirmAgewellIntakeResponse = zod.object({
   "mobility_note": zod.string().optional(),
   "activity_tolerance": zod.string().optional(),
   "bp_evening_systolic": zod.number().nullish(),
-  "bp_evening_diastolic": zod.number().nullish()
+  "bp_evening_diastolic": zod.number().nullish(),
+  "source": zod.string().nullish(),
+  "observed_at": zod.coerce.date().nullish(),
+  "last_synced_at": zod.coerce.date().nullish()
 })),
   "assessments": zod.array(zod.object({
   "day": zod.number().int(),

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { AgewellStore, DomainError } from "./agewell-store";
-import { HARD_RULES, assess, assessCached, context, safeOutput } from "./agewell-engine";
+import { HARD_RULES, assess, assessCached, claude, context, safeOutput } from "./agewell-engine";
 import { GetAgewellPatientResponse, GetAgewellStateResponse } from "@workspace/api-zod";
 import { assertGroundedCarePlan } from "./agewell-intake";
 import type { CarePlan } from "@workspace/api-zod";
@@ -74,6 +74,37 @@ test("exact initial cohort and fully valid detail contracts",()=>{
  for(const row of s.state().patients)GetAgewellPatientResponse.parse(s.detail(row.id));
  assert.equal(s.get("margaret").logs[6].weight_lb,157.8);
  assert.equal(s.get("margaret").logs[6].med_verification.label_dose,"50 mg");
+});
+test("cohort profiles are distinct and connected-device metadata is honest",()=>{
+ const s=new AgewellStore(),signatures=new Set<string>();
+ for(const row of s.state().patients){
+  const p=s.get(row.id);
+  signatures.add(JSON.stringify({plan:p.care_plan,logs:p.logs.map(l=>({vitals:[l.bp_systolic,l.heart_rate,l.weight_lb,l.spo2,l.glucose,l.temp_f],symptoms:l.symptoms,meds:l.meds_taken}))}));
+  assert.ok(p.care_plan.follow_up.length>0,row.id);
+  assert.ok(p.care_plan.medications.every(m=>m.expires_at),row.id);
+  assert.ok(p.logs.every(l=>l.source&&l.observed_at&&l.last_synced_at),row.id);
+  for(const l of p.logs){
+   assert.ok(Number.isFinite(Date.parse(l.date)),`${row.id} invalid log date`);
+   assert.ok(Number.isFinite(Date.parse(String(l.observed_at))),`${row.id} invalid observed_at`);
+   assert.ok(Number.isFinite(Date.parse(String(l.last_synced_at))),`${row.id} invalid last_synced_at`);
+   if(l.weight_lb!==null)assert.match(l.source!,/simulated scale/);
+   if(l.bp_systolic!==null||l.bp_diastolic!==null)assert.match(l.source!,/simulated blood pressure cuff/);
+   if(l.spo2!==null)assert.match(l.source!,/simulated pulse oximeter/);
+   if(l.glucose!==null)assert.match(l.source!,/simulated glucose meter/);
+   if(l.temp_f!==null)assert.match(l.source!,/simulated thermometer/);
+  }
+  for(const f of p.care_plan.follow_up)assert.ok(f.due_date&&Number.isFinite(Date.parse(f.due_date)),`${row.id} invalid follow-up date`);
+ }
+ assert.equal(signatures.size,100);
+});
+test("COPD readings use the patient's baseline while absolute floors remain emergencies",()=>{
+ const s=new AgewellStore(),robert=s.get("robert"),plan=structuredClone(robert.care_plan),stable=structuredClone(robert.logs.slice(0,1));
+ plan.discharge_baseline.spo2=95;stable[0].spo2=95;stable[0].symptoms=[];
+ assert.equal(assessCached(plan,stable).level,"GREEN");
+ stable[0].spo2=91;
+ assert.equal(assessCached(plan,stable).level,"YELLOW");
+ stable[0].spo2=87;
+ assert.equal(assessCached(plan,stable).level,"RED");
 });
 test("seven day teaching scenario, dynamic counts and report",async()=>{
  const s=new AgewellStore();
@@ -161,5 +192,17 @@ test("unsafe/malformed/provider-failure AI falls back and cannot lower hard rule
   assert.equal((await assess(p.care_plan,logs)).ai_mode,"cached");
   globalThis.fetch=async()=>new Response(JSON.stringify({content:[{type:"text",text:JSON.stringify({...fallback,level:"GREEN",rationale:["Oxygen saturation is 87%."]})}]}));
   const a=await assess(p.care_plan,logs);assert.equal(a.level,"RED");assert.equal(a.who_should_act,"emergency");
+ }finally{globalThis.fetch=original;delete process.env.ANTHROPIC_API_KEY;}
+});
+test("AI retries only when the preferred model id is rejected",async()=>{
+ const original=globalThis.fetch,models:string[]=[];process.env.ANTHROPIC_API_KEY="synthetic-test-key";
+ try{
+  globalThis.fetch=async(_input,init)=>{
+   const body=JSON.parse(String(init?.body));models.push(body.model);
+   if(models.length===1)return new Response(JSON.stringify({error:{message:"unknown model"}}),{status:400});
+   return new Response(JSON.stringify({content:[{type:"text",text:"{}"}]}));
+  };
+  await claude("system",{test:true});
+  assert.deepEqual(models,["claude-sonnet-5","claude-sonnet-4-5"]);
  }finally{globalThis.fetch=original;delete process.env.ANTHROPIC_API_KEY;}
 });

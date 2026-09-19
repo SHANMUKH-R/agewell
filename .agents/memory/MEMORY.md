@@ -1,0 +1,2 @@
+- [Investor demo boundaries](investor-demo.md) — preserve shared persona selection and distinguish the synthetic walkthrough from production clinical use.
+- [Shared patient selection](shared-patient-selection.md) — route-driven selection runs once on route entry; polling must never reassert a patient across sessions.

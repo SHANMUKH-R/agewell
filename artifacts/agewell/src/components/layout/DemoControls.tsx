@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { 
   useRunAgewellDemo, 
@@ -22,10 +22,20 @@ export function DemoControls() {
   const patientId = routePatientId || state?.selected_patient_id;
   const aiMode = state?.ai_mode;
   const { toast } = useToast();
+  const routeRef = useRef(routePatientId);
+  const appliedRouteSelection = useRef<string | null>(null);
+  const selectionToken = useRef(0);
+  const rollbackState = useRef<typeof state>(undefined);
+  const failedRoute = useRef<string | null>(null);
+  routeRef.current = routePatientId;
   
   const runDemo = useRunAgewellDemo({
     mutation: {
       onSuccess: (updatedState, variables) => {
+        // Route selections use their own sequenced optimistic handlers below.
+        // Never let a late response from an older route overwrite the current
+        // shared selection.
+        if (variables.data.action === 'select') return;
         queryClient.setQueryData(getGetAgewellStateQueryKey(), updatedState);
         if (variables.data.action === 'load') setLocation('/patients/margaret');
         if (variables.data.action === 'reset') setLocation('/');
@@ -33,15 +43,63 @@ export function DemoControls() {
         queryClient.invalidateQueries({ queryKey: getGetAgewellStateQueryKey() });
         queryClient.invalidateQueries();
       },
-      onError: (err: any) => {
+      onError: (err: any, variables) => {
+        if (variables?.data.action === 'select') return;
         toast({ title: 'Demo action failed', description: err.message || 'Unknown error', variant: 'destructive' });
       }
     }
   });
   const selectPatient = runDemo.mutate;
   useEffect(() => {
-    if (routePatientId) selectPatient({ data: { action: 'select', patient_id: routePatientId } });
-  }, [routePatientId, selectPatient]);
+    if (!routePatientId) {
+      appliedRouteSelection.current = null;
+      return;
+    }
+    if (appliedRouteSelection.current === routePatientId || failedRoute.current === routePatientId) {
+      return;
+    }
+    appliedRouteSelection.current = routePatientId;
+    const currentState = queryClient.getQueryData<typeof state>(getGetAgewellStateQueryKey()) ?? state;
+    if (currentState?.selected_patient_id !== routePatientId) {
+      const token = ++selectionToken.current;
+      rollbackState.current = currentState;
+      const stateQueryKey = getGetAgewellStateQueryKey();
+      void queryClient.cancelQueries({ queryKey: stateQueryKey }).then(() => {
+        if (token !== selectionToken.current || routeRef.current !== routePatientId) return;
+        // Update the shared selection before the network response so every
+        // persona renders the same patient atomically instead of briefly
+        // showing the previous greeting/data.
+        if (currentState) {
+          queryClient.setQueryData(stateQueryKey, {
+            ...currentState,
+            selected_patient_id: routePatientId,
+          });
+        }
+        selectPatient(
+          { data: { action: 'select', patient_id: routePatientId } },
+          {
+            onSuccess: (updatedState) => {
+              if (token !== selectionToken.current || routeRef.current !== routePatientId) return;
+              failedRoute.current = null;
+              queryClient.setQueryData(stateQueryKey, updatedState);
+              queryClient.invalidateQueries({
+                predicate: (query) => query.queryKey[0] !== stateQueryKey[0],
+              });
+            },
+            onError: (err: any) => {
+              if (token !== selectionToken.current || routeRef.current !== routePatientId) return;
+              failedRoute.current = routePatientId;
+              appliedRouteSelection.current = null;
+              if (rollbackState.current) {
+                queryClient.setQueryData(stateQueryKey, rollbackState.current);
+              }
+              toast({ title: 'Could not switch patient', description: err.message || 'Please try again.', variant: 'destructive' });
+            },
+          },
+        );
+      });
+    }
+  }, [routePatientId, selectPatient, state, queryClient, toast]);
 
   // Handle keyboard shortcuts
   useEffect(() => {

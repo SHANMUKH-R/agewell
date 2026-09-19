@@ -42,4 +42,10 @@ export interface DayLog {
   bp_evening_systolic?: number | null;
   /** @nullable */
   bp_evening_diastolic?: number | null;
+  /** @nullable */
+  source?: string | null;
+  /** @nullable */
+  observed_at?: Date | null;
+  /** @nullable */
+  last_synced_at?: Date | null;
 }
