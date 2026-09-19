@@ -1,0 +1,700 @@
+{
+  "GREEN": {
+    "headline": "Recovery is tracking with the discharge plan",
+    "recommended_action": "Continue logging your recovery observations.",
+    "who_should_act": "patient"
+  },
+  "YELLOW": {
+    "headline": "Early changes deserve a closer look",
+    "recommended_action": "Caregiver review and an additional recovery check are requested.",
+    "who_should_act": "caregiver"
+  },
+  "ORANGE": {
+    "headline": "Your care team should review these changes",
+    "recommended_action": "Nurse review of the recorded changes is requested within 24 hours.",
+    "who_should_act": "nurse"
+  },
+  "RED": {
+    "headline": "Urgent warning signs need immediate human attention",
+    "recommended_action": "Please call 911 now. A care-team notification is simulated; AgeWell does not contact emergency services.",
+    "who_should_act": "emergency"
+  },
+  "mismatch": {
+    "headline": "Medicine bottle differs from the discharge record",
+    "recommended_action": "Pharmacist review of the medication discrepancy is requested within 24 hours.",
+    "who_should_act": "pharmacist"
+  },
+  "precomputed": {
+    "5291f1c7173a0dc902cbb270792167141d25bbacb558d54b2e415e76759d27a4": {
+      "day": 1,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 154 lb versus discharge 154.2 lb.",
+        "Heart rate is 70 versus discharge 68.",
+        "Blood pressure is 120/74 versus discharge 118/72.",
+        "Oxygen saturation is 96%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "536b7a95e6731740a252881d48ce66f7c3b28f6261599db46dd915a020809a49": {
+      "day": 2,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 154.3 lb versus discharge 154.2 lb.",
+        "Heart rate is 69 versus discharge 68.",
+        "Blood pressure is 118/72 versus discharge 118/72.",
+        "Oxygen saturation is 97%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "9fe60ed6bbbb61fee6b1e339759a113a0aa6564ed3f8754d62547f16951761d2": {
+      "day": 3,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 154.1 lb versus discharge 154.2 lb.",
+        "Heart rate is 71 versus discharge 68.",
+        "Blood pressure is 122/75 versus discharge 118/72.",
+        "Oxygen saturation is 96%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "8e90d7aebc913e142a7e547cbf2c4f091d721d7820995ea3dabe44491aa5a0d9": {
+      "day": 4,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 154.6 lb versus discharge 154.2 lb.",
+        "Heart rate is 72 versus discharge 68.",
+        "Blood pressure is 119/73 versus discharge 118/72.",
+        "Oxygen saturation is 96%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "ef40f3f67cf75a59611b23a6d50ff4875c620662c4d7bce3d9d61668a444ab27": {
+      "day": 5,
+      "level": "YELLOW",
+      "headline": "Early changes deserve a closer look",
+      "recommended_action": "Caregiver review and an additional recovery check are requested.",
+      "who_should_act": "caregiver",
+      "rationale": [
+        "Weight is 155.9 lb versus discharge 154.2 lb.",
+        "Heart rate is 78 versus discharge 68.",
+        "Blood pressure is 124/76 versus discharge 118/72.",
+        "Oxygen saturation is 95%.",
+        "Reported symptoms: \"mild fatigue\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "0bb9122301f3753e05fd7d4c429eaf9e5c618deebd0a22897fd73c256e613279": {
+      "day": 6,
+      "level": "ORANGE",
+      "headline": "Your care team should review these changes",
+      "recommended_action": "Nurse review of the recorded changes is requested within 24 hours.",
+      "who_should_act": "nurse",
+      "rationale": [
+        "Weight is 156.8 lb versus discharge 154.2 lb.",
+        "Heart rate is 84 versus discharge 68.",
+        "Blood pressure is 131/80 versus discharge 118/72.",
+        "Oxygen saturation is 94%.",
+        "Reported symptoms: \"mild fatigue\", \"ankle swelling\", \"dizziness on standing\"."
+      ],
+      "deviation_from_plan": "Today's 3 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "f6946f11b6267b8ef7c5626f3a5a44c65d574837011c26e97be832ffc9a40a92": {
+      "day": 7,
+      "level": "ORANGE",
+      "headline": "Medicine bottle differs from the discharge record",
+      "recommended_action": "Pharmacist review of the medication discrepancy is requested within 24 hours.",
+      "who_should_act": "pharmacist",
+      "rationale": [
+        "Bottle verification records \"mismatch\" with the discharge medication list.",
+        "Weight is 157.8 lb versus discharge 154.2 lb.",
+        "Heart rate is 91 versus discharge 68.",
+        "Blood pressure is 138/84 versus discharge 118/72.",
+        "Oxygen saturation is 93%.",
+        "Reported symptoms: \"fatigue\", \"ankle swelling\", \"dizziness on standing\", \"short of breath climbing stairs\"."
+      ],
+      "deviation_from_plan": "Today's 4 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_MED_MISMATCH"
+      ],
+      "ai_mode": "cached"
+    },
+    "410a6bcb15561cd0fa6f827568b6162f11cb92309ee3a81061601fcdb48baa65": {
+      "day": 1,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "656e24b880c2d1a3b9fbaa6f03ec693f576b315f0818900ccf1c9217d7379eaf": {
+      "day": 2,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.1 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 129/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "caf551e91377114bd6a0c21cd77a3988ae1d41cf748124be1e0bb20c8256ce63": {
+      "day": 3,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.2 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 130/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "ee88e8edb2524879804fdbf36c2e380bc7eaf65510a3797cbfab9b6c775c08c7": {
+      "day": 4,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.3 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "2ae75d24bb0eade5ebe23e2ecef41efecdd96da19c4c09d86a29869755d263fc": {
+      "day": 5,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.4 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 129/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "e415c55ff412e23c26511b6ad5567b4468c441343fd7b46b74e4820fbed6484f": {
+      "day": 6,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.5 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 130/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "1b06f84ca0aa0c3192c3def52f1be23e72fb4c04eeb8bd9e983e87cb8066ffcd": {
+      "day": 7,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.6 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "1777e3f7c54b358c2b27246546360d2994847fdfce87156633fdb49b31d8260e": {
+      "day": 1,
+      "level": "YELLOW",
+      "headline": "Early changes deserve a closer look",
+      "recommended_action": "Caregiver review and an additional recovery check are requested.",
+      "who_should_act": "caregiver",
+      "rationale": [
+        "At least 2 recorded doses were missed in 48 hours.",
+        "Weight is 167 lb versus discharge 166 lb.",
+        "Heart rate is 85 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%.",
+        "Reported symptoms: \"mild fatigue\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_MED_MISSED_2"
+      ],
+      "ai_mode": "cached"
+    },
+    "ce1f8fb040350c6959b664390355d69754b44c8472c8880c9472e3a6127fc827": {
+      "day": 2,
+      "level": "YELLOW",
+      "headline": "Early changes deserve a closer look",
+      "recommended_action": "Caregiver review and an additional recovery check are requested.",
+      "who_should_act": "caregiver",
+      "rationale": [
+        "At least 2 recorded doses were missed in 48 hours.",
+        "Weight is 167.2 lb versus discharge 166 lb.",
+        "Heart rate is 86 versus discharge 74.",
+        "Blood pressure is 129/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%.",
+        "Reported symptoms: \"mild fatigue\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_MED_MISSED_2"
+      ],
+      "ai_mode": "cached"
+    },
+    "67b3214718cfa4af8d928ed269766c2778bda6938657bdacc04af80a80bfda37": {
+      "day": 3,
+      "level": "YELLOW",
+      "headline": "Early changes deserve a closer look",
+      "recommended_action": "Caregiver review and an additional recovery check are requested.",
+      "who_should_act": "caregiver",
+      "rationale": [
+        "At least 2 recorded doses were missed in 48 hours.",
+        "Weight is 167.4 lb versus discharge 166 lb.",
+        "Heart rate is 87 versus discharge 74.",
+        "Blood pressure is 130/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%.",
+        "Reported symptoms: \"mild fatigue\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_MED_MISSED_2"
+      ],
+      "ai_mode": "cached"
+    },
+    "a15ac2437979ad78775cf368f2d03c2e70af8f32633e069ddeb22294c8fa4ea0": {
+      "day": 4,
+      "level": "YELLOW",
+      "headline": "Early changes deserve a closer look",
+      "recommended_action": "Caregiver review and an additional recovery check are requested.",
+      "who_should_act": "caregiver",
+      "rationale": [
+        "At least 2 recorded doses were missed in 48 hours.",
+        "Weight is 167.6 lb versus discharge 166 lb.",
+        "Heart rate is 88 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%.",
+        "Reported symptoms: \"mild fatigue\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_MED_MISSED_2"
+      ],
+      "ai_mode": "cached"
+    },
+    "cbfa501fc4def1a3a7fc6280d05aa874ca54b4eb6f8986845cefd89df215ac69": {
+      "day": 5,
+      "level": "YELLOW",
+      "headline": "Early changes deserve a closer look",
+      "recommended_action": "Caregiver review and an additional recovery check are requested.",
+      "who_should_act": "caregiver",
+      "rationale": [
+        "At least 2 recorded doses were missed in 48 hours.",
+        "Weight is 167.8 lb versus discharge 166 lb.",
+        "Heart rate is 89 versus discharge 74.",
+        "Blood pressure is 129/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%.",
+        "Reported symptoms: \"mild fatigue\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_MED_MISSED_2"
+      ],
+      "ai_mode": "cached"
+    },
+    "3f72d23b8ba80c10835f4724065256b17f0ae8f0bc02f23fce4ed7083253ba9e": {
+      "day": 6,
+      "level": "YELLOW",
+      "headline": "Early changes deserve a closer look",
+      "recommended_action": "Caregiver review and an additional recovery check are requested.",
+      "who_should_act": "caregiver",
+      "rationale": [
+        "At least 2 recorded doses were missed in 48 hours.",
+        "Weight is 168 lb versus discharge 166 lb.",
+        "Heart rate is 90 versus discharge 74.",
+        "Blood pressure is 130/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%.",
+        "Reported symptoms: \"mild fatigue\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_MED_MISSED_2"
+      ],
+      "ai_mode": "cached"
+    },
+    "7b57fd802a6822268c9d6cdeee8b15937170f0f3ef784ef702e03d9d98c8927e": {
+      "day": 7,
+      "level": "YELLOW",
+      "headline": "Early changes deserve a closer look",
+      "recommended_action": "Caregiver review and an additional recovery check are requested.",
+      "who_should_act": "caregiver",
+      "rationale": [
+        "At least 2 recorded doses were missed in 48 hours.",
+        "Weight is 168.2 lb versus discharge 166 lb.",
+        "Heart rate is 91 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%.",
+        "Reported symptoms: \"mild fatigue\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_MED_MISSED_2"
+      ],
+      "ai_mode": "cached"
+    },
+    "fe6999f61a3b8e1b43f9c0f5468f89207aba09a43fde21aea8d55ae0f1af47c5": {
+      "day": 1,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "244be30e55df8f69c78a88b65d18ec9d950cdd98bbf161ae22cdd37793d31f9a": {
+      "day": 2,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.1 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 129/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "787ca91ab3402d16357129f0d2970218bf5e26d80b3af48d9965a58cf7ead1e6": {
+      "day": 3,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.2 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 130/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "abc596aa0c44fa3c934f8eb390018f5a45d0e8229145e37436331d88b7313d6b": {
+      "day": 4,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.3 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "79faabe6d10dcf87571a218c4de151762a2eb6fa45b45c8a2e2185f6add3d695": {
+      "day": 5,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.4 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 129/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "8295f66328160f49bb1bacb18797672e193edee6b533f45465fc8f7b3d7512f1": {
+      "day": 6,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.5 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 130/78 versus discharge 128/78.",
+        "Oxygen saturation is 94%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "55822a83df84cd2b18b259ed6f160f1aed6f984eabe0ec16ca681d495c8f4165": {
+      "day": 7,
+      "level": "GREEN",
+      "headline": "Recovery is tracking with the discharge plan",
+      "recommended_action": "Continue logging your recovery observations.",
+      "who_should_act": "patient",
+      "rationale": [
+        "Weight is 166.6 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 95%."
+      ],
+      "deviation_from_plan": null,
+      "confidence": "high",
+      "triggered_hard_rules": [],
+      "ai_mode": "cached"
+    },
+    "79a8aeafaece2b19562e29a6482c3581dc77be05719a7b5f88db4fbe77688443": {
+      "day": 1,
+      "level": "RED",
+      "headline": "Urgent warning signs need immediate human attention",
+      "recommended_action": "Please call 911 now. A care-team notification is simulated; AgeWell does not contact emergency services.",
+      "who_should_act": "emergency",
+      "rationale": [
+        "Oxygen saturation below 88%.",
+        "Reported a symptom in the emergency list: \"chest pain\", \"shortness of breath at rest\", \"fainting\", \"confusion\", \"severe bleeding\".",
+        "Weight is 166 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 87%.",
+        "Reported symptoms: \"confusion\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_SPO2_CRIT",
+        "HR_RED_FLAG_SX"
+      ],
+      "ai_mode": "cached"
+    },
+    "3170b35c14ef16993d1f0bac1101789eb008c810ffc8029feee6fe693537032b": {
+      "day": 2,
+      "level": "RED",
+      "headline": "Urgent warning signs need immediate human attention",
+      "recommended_action": "Please call 911 now. A care-team notification is simulated; AgeWell does not contact emergency services.",
+      "who_should_act": "emergency",
+      "rationale": [
+        "Oxygen saturation below 88%.",
+        "Reported a symptom in the emergency list: \"chest pain\", \"shortness of breath at rest\", \"fainting\", \"confusion\", \"severe bleeding\".",
+        "Weight is 166.1 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 129/78 versus discharge 128/78.",
+        "Oxygen saturation is 87%.",
+        "Reported symptoms: \"confusion\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_SPO2_CRIT",
+        "HR_RED_FLAG_SX"
+      ],
+      "ai_mode": "cached"
+    },
+    "5a69237dbbe54967e9867105dc84e84461041d07c6748df486d4d09a27707ecb": {
+      "day": 3,
+      "level": "RED",
+      "headline": "Urgent warning signs need immediate human attention",
+      "recommended_action": "Please call 911 now. A care-team notification is simulated; AgeWell does not contact emergency services.",
+      "who_should_act": "emergency",
+      "rationale": [
+        "Oxygen saturation below 88%.",
+        "Reported a symptom in the emergency list: \"chest pain\", \"shortness of breath at rest\", \"fainting\", \"confusion\", \"severe bleeding\".",
+        "Weight is 166.2 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 130/78 versus discharge 128/78.",
+        "Oxygen saturation is 87%.",
+        "Reported symptoms: \"confusion\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_SPO2_CRIT",
+        "HR_RED_FLAG_SX"
+      ],
+      "ai_mode": "cached"
+    },
+    "145a9f4a5be75385a2aa3c4a7190500aace7e2954f942d46c211d47a457a50d6": {
+      "day": 4,
+      "level": "RED",
+      "headline": "Urgent warning signs need immediate human attention",
+      "recommended_action": "Please call 911 now. A care-team notification is simulated; AgeWell does not contact emergency services.",
+      "who_should_act": "emergency",
+      "rationale": [
+        "Oxygen saturation below 88%.",
+        "Reported a symptom in the emergency list: \"chest pain\", \"shortness of breath at rest\", \"fainting\", \"confusion\", \"severe bleeding\".",
+        "Weight is 166.3 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 87%.",
+        "Reported symptoms: \"confusion\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_SPO2_CRIT",
+        "HR_RED_FLAG_SX"
+      ],
+      "ai_mode": "cached"
+    },
+    "7340a41abde9f8d0bcb2ec2ac2403e927b2235a371f093fd2d2cd0b8b52bad36": {
+      "day": 5,
+      "level": "RED",
+      "headline": "Urgent warning signs need immediate human attention",
+      "recommended_action": "Please call 911 now. A care-team notification is simulated; AgeWell does not contact emergency services.",
+      "who_should_act": "emergency",
+      "rationale": [
+        "Oxygen saturation below 88%.",
+        "Reported a symptom in the emergency list: \"chest pain\", \"shortness of breath at rest\", \"fainting\", \"confusion\", \"severe bleeding\".",
+        "Weight is 166.4 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 129/78 versus discharge 128/78.",
+        "Oxygen saturation is 87%.",
+        "Reported symptoms: \"confusion\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_SPO2_CRIT",
+        "HR_RED_FLAG_SX"
+      ],
+      "ai_mode": "cached"
+    },
+    "e2e6ea4e13adc02afd4f2082d09fa03d45825f3837edebb3a1f6315bec6b3d48": {
+      "day": 6,
+      "level": "RED",
+      "headline": "Urgent warning signs need immediate human attention",
+      "recommended_action": "Please call 911 now. A care-team notification is simulated; AgeWell does not contact emergency services.",
+      "who_should_act": "emergency",
+      "rationale": [
+        "Oxygen saturation below 88%.",
+        "Reported a symptom in the emergency list: \"chest pain\", \"shortness of breath at rest\", \"fainting\", \"confusion\", \"severe bleeding\".",
+        "Weight is 166.5 lb versus discharge 166 lb.",
+        "Heart rate is 75 versus discharge 74.",
+        "Blood pressure is 130/78 versus discharge 128/78.",
+        "Oxygen saturation is 87%.",
+        "Reported symptoms: \"confusion\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_SPO2_CRIT",
+        "HR_RED_FLAG_SX"
+      ],
+      "ai_mode": "cached"
+    },
+    "0d9e761fcc68cb7882ae68e8fc882769b1df2617d520ad1a1ae27e49d62a0628": {
+      "day": 7,
+      "level": "RED",
+      "headline": "Urgent warning signs need immediate human attention",
+      "recommended_action": "Please call 911 now. A care-team notification is simulated; AgeWell does not contact emergency services.",
+      "who_should_act": "emergency",
+      "rationale": [
+        "Oxygen saturation below 88%.",
+        "Reported a symptom in the emergency list: \"chest pain\", \"shortness of breath at rest\", \"fainting\", \"confusion\", \"severe bleeding\".",
+        "Weight is 166.6 lb versus discharge 166 lb.",
+        "Heart rate is 74 versus discharge 74.",
+        "Blood pressure is 128/78 versus discharge 128/78.",
+        "Oxygen saturation is 87%.",
+        "Reported symptoms: \"confusion\"."
+      ],
+      "deviation_from_plan": "Today's 1 reported symptoms and recorded measurements are being compared with this patient's documented discharge baseline.",
+      "confidence": "high",
+      "triggered_hard_rules": [
+        "HR_SPO2_CRIT",
+        "HR_RED_FLAG_SX"
+      ],
+      "ai_mode": "cached"
+    }
+  }
+}
