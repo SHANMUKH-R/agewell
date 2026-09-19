@@ -153,6 +153,28 @@
   --severity-red: 0 84% 50%;
 }
 
+/*
+ * Colorblind-safe severity ramp.
+ * Toggled by the Elder accessibility profile, which sets data-palette="cb" on
+ * <html>. Because every severity signal in the app resolves through these four
+ * CSS variables, this single block recolors dots, pills, and chips everywhere
+ * without touching any component. Hues chosen from the Okabe-Ito palette
+ * (blue / amber / vermillion / magenta) to stay distinguishable across the
+ * common types of color vision deficiency.
+ */
+html[data-palette='cb'] {
+  --severity-green: 201 100% 35%; /* blue — "good" */
+  --severity-yellow: 39 100% 45%; /* amber */
+  --severity-orange: 26 100% 42%; /* vermillion */
+  --severity-red: 345 100% 40%; /* magenta-red */
+}
+html[data-palette='cb'].dark {
+  --severity-green: 201 90% 55%;
+  --severity-yellow: 39 95% 55%;
+  --severity-orange: 26 95% 55%;
+  --severity-red: 345 90% 60%;
+}
+
 @layer base {
   * {
     @apply border-border;

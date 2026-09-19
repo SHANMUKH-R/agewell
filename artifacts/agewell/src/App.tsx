@@ -19,6 +19,8 @@ import ElderApp from '@/pages/elder';
 import FamilyView from '@/pages/family';
 import IntakeScreen from '@/pages/intake';
 import ReportScreen from '@/pages/report';
+import Welcome from '@/pages/welcome';
+import { AccessibilityProvider } from '@/lib/accessibility';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,6 +39,7 @@ function Router() {
         <Switch>
           <Route path="/" component={ClinicianDashboard} />
           <Route path="/patients/:id" component={PatientDetail} />
+          <Route path="/welcome" component={Welcome} />
           <Route path="/elder" component={ElderApp} />
           <Route path="/family" component={FamilyView} />
           <Route path="/intake" component={IntakeScreen} />
@@ -56,14 +59,16 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
 function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="agewell-theme">
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-            <Router />
-          </WouterRouter>
-          <Toaster />
-        </TooltipProvider>
-      </QueryClientProvider>
+      <AccessibilityProvider>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+              <Router />
+            </WouterRouter>
+            <Toaster />
+          </TooltipProvider>
+        </QueryClientProvider>
+      </AccessibilityProvider>
     </ThemeProvider>
   );
 }
