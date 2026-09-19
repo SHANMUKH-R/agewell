@@ -11,6 +11,36 @@ import { QueryError } from '@/components/ui/query-error';
 
 type ElderView = 'home' | 'recovery' | 'meds' | 'readings' | 'feelings';
 
+const actorLabels: Record<string, string> = {
+  pharmacist: 'Your pharmacist',
+  nurse: 'Your nurse',
+  physician: 'Your doctor',
+  caregiver: 'Your family caregiver',
+  emergency: 'Emergency services',
+};
+
+function isMedicationInstruction(text: string) {
+  const medicationWord = /\b(medication|medicine|drug|dose|dosing|tablet|pill|capsule)\b/i;
+  const instructionWord = /\b(start|stop|change|adjust|increase|decrease|take|hold|skip|resume|discontinue|double)\b/i;
+  const numericDose = /\b\d+(?:\.\d+)?\s*(?:mg|mcg|g|ml|tablet|tablets|pill|pills|capsule|capsules)\b/i;
+
+  return (
+    numericDose.test(text) ||
+    (medicationWord.test(text) && instructionWord.test(text)) ||
+    /\b(start|stop|change|adjust)\b.{0,40}\b(medication|medicine|dose|drug|pill|tablet)\b/i.test(text)
+  );
+}
+
+function formatAppointmentDate(date: string) {
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return date;
+  return parsed.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
 export default function ElderApp() {
   const { data: state } = useGetAgewellState();
   const id = state?.selected_patient_id || 'margaret';
@@ -122,6 +152,41 @@ export default function ElderApp() {
 
   const totalMeds = care_plan.medications.length;
   const takenMeds = care_plan.medications.filter(med => currentLog?.meds_taken.some(m => m.med_name === med.name && m.taken)).length;
+  const followUpAppointments = [...care_plan.follow_up]
+    .filter(appointment => appointment.due_date)
+    .sort((a, b) => {
+      return new Date(a.due_date || '').getTime() - new Date(b.due_date || '').getTime();
+    });
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const nextAppointmentIndex = Math.max(
+    0,
+    followUpAppointments.findIndex(appointment => {
+      const date = new Date(appointment.due_date || '');
+      date.setHours(0, 0, 0, 0);
+      return date >= today;
+    }),
+  );
+  const careTeamName = actorLabels[current_assessment.who_should_act] || 'Your care team';
+  const careTeamAction = isMedicationInstruction(current_assessment.recommended_action)
+    ? "They're reviewing your care."
+    : current_assessment.recommended_action;
+  const severityPanelClass = current_assessment.level === 'RED'
+    ? 'bg-red-50 border-red-200 dark:bg-red-950/20 dark:border-red-900'
+    : current_assessment.level === 'ORANGE'
+      ? 'bg-orange-50 border-orange-200 dark:bg-orange-950/20 dark:border-orange-900'
+      : 'bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-900';
+  const spokenHomeContext = [
+    current_assessment.level === 'ORANGE' || current_assessment.level === 'RED'
+      ? 'AgeWell noticed something and told your care team.'
+      : '',
+    current_assessment.level !== 'GREEN'
+      ? `Your care team is on it. ${careTeamName}. ${careTeamAction}`
+      : '',
+    followUpAppointments.length > 0
+      ? `Next appointment: ${followUpAppointments[nextAppointmentIndex].provider}, ${followUpAppointments[nextAppointmentIndex].specialty || 'follow-up'}, ${formatAppointmentDate(followUpAppointments[nextAppointmentIndex].due_date || '')}.`
+      : '',
+  ].filter(Boolean).join(' ');
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 pb-24 text-[20px] font-sans">
@@ -151,7 +216,33 @@ export default function ElderApp() {
       <div className="max-w-2xl mx-auto px-6 py-8">
         
         {activeView === 'home' && (
-          <div className="space-y-6">
+          <div className="space-y-6" aria-label={spokenHomeContext || undefined}>
+            {(current_assessment.level === 'ORANGE' || current_assessment.level === 'RED') && (
+              <div
+                role="status"
+                className={`rounded-3xl border-2 p-6 shadow-sm ${severityPanelClass}`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`mt-1 h-8 w-8 rounded-full ${getLevelColor(current_assessment.level)} shrink-0`} />
+                  <div>
+                    <h2 className="text-[26px] font-bold">Your care team has been told</h2>
+                    <p className="mt-2 text-[20px] font-medium text-slate-700 dark:text-slate-300">
+                      AgeWell noticed something and told your care team.
+                    </p>
+                    {current_assessment.level === 'RED' && (
+                      <a
+                        href="tel:911"
+                        className="mt-4 inline-flex min-h-[60px] items-center rounded-2xl bg-red-600 px-5 py-3 text-[22px] font-bold text-white shadow-sm hover:bg-red-700"
+                      >
+                        <PhoneCall className="mr-3 h-6 w-6" />
+                        Call 911 Now
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
             <button 
               onClick={() => setActiveView('recovery')}
               className={`w-full p-8 rounded-3xl border-2 text-left transition-colors flex flex-col gap-4 shadow-sm ${
@@ -221,6 +312,54 @@ export default function ElderApp() {
                 </div>
               )}
             </button>
+
+            {current_assessment.level !== 'GREEN' && (
+              <section className={`rounded-3xl border-2 p-7 shadow-sm ${severityPanelClass}`} aria-label="Care team notified">
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="mt-1 h-8 w-8 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                  <div>
+                    <h2 className="text-[26px] font-bold">Your care team is on it.</h2>
+                    <p className="mt-3 text-[21px] font-bold">{careTeamName}</p>
+                    <p className="mt-2 text-[20px] leading-relaxed text-slate-700 dark:text-slate-300">
+                      {careTeamAction}
+                    </p>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {followUpAppointments.length > 0 && (
+              <section className="rounded-3xl border-2 border-slate-200 bg-white p-7 shadow-sm dark:border-slate-800 dark:bg-slate-900" aria-label="Appointment reminders">
+                <div className="mb-5 flex items-center justify-between gap-4">
+                  <div>
+                    <h2 className="text-[26px] font-bold">Appointment reminders</h2>
+                    <p className="mt-1 text-[19px] text-slate-500 dark:text-slate-400">Your upcoming follow-up visits</p>
+                  </div>
+                  <Activity className="h-8 w-8 shrink-0 text-sky-600 dark:text-sky-400" />
+                </div>
+                <div className="space-y-3">
+                  {followUpAppointments.map((appointment, index) => (
+                    <div
+                      key={`${appointment.provider}-${appointment.due_date}-${index}`}
+                      className={`rounded-2xl border-2 p-4 ${index === nextAppointmentIndex
+                        ? 'border-sky-300 bg-sky-50 dark:border-sky-700 dark:bg-sky-950/30'
+                        : 'border-slate-100 bg-slate-50 dark:border-slate-800 dark:bg-slate-950/40'
+                      }`}
+                    >
+                      <p className="text-[21px] font-bold">
+                        {appointment.provider} — {appointment.specialty || 'Follow-up'}
+                      </p>
+                      <p className="mt-1 text-[20px] text-slate-600 dark:text-slate-300">
+                        {formatAppointmentDate(appointment.due_date || '')}
+                        {index === nextAppointmentIndex && (
+                          <span className="ml-3 font-bold text-sky-700 dark:text-sky-300">Next visit</span>
+                        )}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         )}
 
